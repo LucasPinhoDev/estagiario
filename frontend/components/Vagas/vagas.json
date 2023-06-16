@@ -1,0 +1,140 @@
+[
+  {
+    "title": "Estágio em Desenvolvimento Front-end",
+    "image": "https://remotive.com/web/image/hr.job/1665498/logo/",
+    "jobLocationType": "In-office",
+    "datePosted": "2023-05-08 00:00:00",
+    "desc": "Buscamos um estagiário de desenvolvimento para se juntar à nossa equipe de tecnologia. Você irá trabalhar em projetos desafiadores, colaborar com desenvolvedores experientes e aprender com as mais recentes tendências e tecnologias em desenvolvimento. Oferecemos uma bolsa-auxílio competitiva e a oportunidade de crescer em uma empresa de tecnologia inovadora. Candidate-se agora!",
+    "occupationalCategory": ["Desenvolvimento de Software","T.I"],
+    "desiredResponsibility": "Desenvolvimento de interfaces de usuário para aplicações web, utilizando as linguagens HTML, CSS e JavaScript. Criação e manutenção de páginas responsivas e com boa usabilidade. Colaboração com a equipe de design e back-end para o desenvolvimento de projetos.",
+    "nececessaryKnowledge": "Conhecimento em linguagens HTML, CSS e JavaScript. Familiaridade com frameworks como React, Vue.js ou Angular. Noções de UX/UI e design responsivo. Boa comunicação e habilidade em trabalhar em equipe.",
+    "benefits": "Bolsa-auxílio compatível com o mercado, vale-refeição, vale-transporte, ambiente descontraído e colaborativo, possibilidade de efetivação após o estágio.",
+    "hiringOrganization": {
+      "name": "Digital Tech LTDA",
+      "logo": "https://remotive.com/web/image/hr.job/1665498/logo/",
+      "applyLink": "https://estagiar.io",
+      "instagram": "@estagiar.io",
+      "desc": "Somos uma empresa de tecnologia inovadora, focada em soluções disruptivas que transformam o mundo por meio da tecnologia.",
+      "about": "A Digital Tech é uma startup de tecnologia com foco em soluções web para empresas de diversos segmentos. Somos uma equipe jovem e dinâmica, em busca de inovação e resultados."
+    },
+    "baseSalary": {
+      "currency": "REAL",
+      "value": 1200.00
+    }
+  },
+  {
+    "title": "Desenvolvedor(a) Front-end",
+    "image": "https://remotive.com/web/image/hr.job/1665498/logo/",
+    "jobLocationType": "Onsite",
+    "datePosted": "2023-05-08 00:00:00",
+    "desc": "Buscamos um estagiário de desenvolvimento para se juntar à nossa equipe de tecnologia. Você irá trabalhar em projetos desafiadores, colaborar com desenvolvedores experientes e aprender com as mais recentes tendências e tecnologias em desenvolvimento. Oferecemos uma bolsa-auxílio competitiva e a oportunidade de crescer em uma empresa de tecnologia inovadora. Candidate-se agora!",
+    "occupationalCategory": ["Tecnologia da Informação","T.I"],
+    "desiredResponsibility": "Desenvolver interfaces de usuário responsivas e elegantes utilizando HTML, CSS e JavaScript; Integrar interfaces com APIs RESTful; Desenvolver soluções de alto desempenho que atendam aos requisitos de escalabilidade e segurança;",
+    "nececessaryKnowledge": "Experiência prévia em desenvolvimento de interfaces de usuário utilizando HTML, CSS e JavaScript; Conhecimentos em React, Angular ou Vue; Conhecimentos em metodologias ágeis de desenvolvimento de software;",
+    "benefits": "Plano de saúde; Vale refeição; Vale transporte; Acesso a cursos de capacitação e treinamentos internos;",
+    "hiringOrganization": {
+      "name": "Tech Solutions",
+      "logo": "https://remotive.com/web/image/hr.job/1665498/logo/",
+      "applyLink": "https://estagiar.io",
+      "instagram": "@estagiar.io",
+      "desc": "Somos uma empresa de tecnologia inovadora, focada em soluções disruptivas que transformam o mundo por meio da tecnologia.",
+      "about": "Tech Solutions é uma empresa de tecnologia que oferece soluções inovadoras para empresas dos mais diversos segmentos."
+    },
+    "baseSalary": {
+      "currency": "BRL",
+      "value": 2000
+    }
+  },
+  {
+    "title": "Analista de Dados",
+    "image": "https://remotive.com/web/image/hr.job/1665498/logo/",
+    "jobLocationType": "Remote",
+    "datePosted": "2023-05-08 00:00:00",
+    "desc": "Buscamos um estagiário de desenvolvimento para se juntar à nossa equipe de tecnologia. Você irá trabalhar em projetos desafiadores, colaborar com desenvolvedores experientes e aprender com as mais recentes tendências e tecnologias em desenvolvimento. Oferecemos uma bolsa-auxílio competitiva e a oportunidade de crescer em uma empresa de tecnologia inovadora. Candidate-se agora!",
+    "occupationalCategory": ["Tecnologia da Informação","T.I"],
+    "desiredResponsibility": "Analisar dados de negócio e apresentar insights para a equipe de liderança; Criar dashboards e relatórios utilizando ferramentas de visualização de dados; Identificar oportunidades de melhoria nos processos de coleta, tratamento e análise de dados;",
+    "nececessaryKnowledge": "Experiência prévia em análise de dados; Conhecimentos em SQL e ferramentas de ETL; Conhecimentos em ferramentas de visualização de dados como Power BI, Tableau ou QlikView;",
+    "benefits": "Plano de saúde; Vale refeição; Vale transporte; Horário flexível;",
+    "hiringOrganization": {
+      "name": "Data Analytics",
+      "logo": "https://remotive.com/web/image/hr.job/1665498/logo/",
+      "applyLink": "https://estagiar.io",
+      "instagram": "@estagiar.io",
+      "desc": "Somos uma empresa de tecnologia inovadora, focada em soluções disruptivas que transformam o mundo por meio da tecnologia.",
+      "about": "Data Analytics é uma startup que oferece soluções de análise de dados para empresas dos mais diversos segmentos."
+    },
+    "baseSalary": {
+      "currency": "BRL",
+      "value": 2500
+    }
+  },
+  {
+    "title": "Estagiário de Desenvolvimento Frontend",
+    "image": "https://remotive.com/web/image/hr.job/1665498/logo/",
+    "jobLocationType": "Presencial",
+    "datePosted": "2023-05-08 00:00:00",
+    "desc": "Buscamos um estagiário de desenvolvimento para se juntar à nossa equipe de tecnologia. Você irá trabalhar em projetos desafiadores, colaborar com desenvolvedores experientes e aprender com as mais recentes tendências e tecnologias em desenvolvimento. Oferecemos uma bolsa-auxílio competitiva e a oportunidade de crescer em uma empresa de tecnologia inovadora. Candidate-se agora!",
+    "occupationalCategory": ["Desenvolvimento de Software","T.I"],
+    "desiredResponsibility": "Desenvolver e manter páginas da web amigáveis para o usuário, melhorar a interface do usuário e a experiência do usuário, trabalhar com desenvolvedores de back-end para implementar designs web, solucionar e depurar problemas, escrever código limpo, eficiente e bem documentado.",
+    "nececessaryKnowledge": "HTML, CSS, JavaScript, design responsivo, React, Git, metodologias ágeis.",
+    "benefits": "Horários de trabalho flexíveis, equilíbrio entre vida pessoal e profissional, seguro saúde, vale-transporte, snacks e bebidas gratuitas.",
+    "hiringOrganization": {
+      "name": "Soluções Tecnológicas",
+      "logo": "https://remotive.com/web/image/hr.job/1665498/logo/",
+      "applyLink": "https://solucoestecnologicas.com/carreiras",
+      "instagram": "@estagiar.io",
+      "desc": "Somos uma empresa de tecnologia inovadora, focada em soluções disruptivas que transformam o mundo por meio da tecnologia.",
+      "about": "Soluções Tecnológicas é uma startup em rápido crescimento que oferece soluções inovadoras para uma variedade de setores, desde finanças até saúde. Nossa missão é tornar a tecnologia mais acessível e amigável ao usuário, e estamos procurando indivíduos talentosos que compartilham nossa visão para se juntar à nossa equipe."
+    },
+    "baseSalary": {
+      "currency": "BRL",
+      "value": 1200
+    }
+  },
+  {
+    "title": "Estagiário de Business Intelligence",
+    "image": "https://remotive.com/web/image/hr.job/1665498/logo/",
+    "jobLocationType": "Híbrido",
+    "datePosted": "2023-05-08 00:00:00",
+    "desc": "Buscamos um estagiário de desenvolvimento para se juntar à nossa equipe de tecnologia. Você irá trabalhar em projetos desafiadores, colaborar com desenvolvedores experientes e aprender com as mais recentes tendências e tecnologias em desenvolvimento. Oferecemos uma bolsa-auxílio competitiva e a oportunidade de crescer em uma empresa de tecnologia inovadora. Candidate-se agora!",
+    "occupationalCategory": ["Business Intelligence","T.I"],
+    "desiredResponsibility": "Auxiliar na criação de dashboards e relatórios para monitorar métricas-chave de negócios, coletar e analisar dados para identificar tendências e insights, ajudar na implementação de soluções de BI, participar de reuniões e discussões para propor novas ideias e soluções.",
+    "nececessaryKnowledge": "SQL, Excel, Power BI, Tableau, ferramentas de análise de dados, lógica de programação, conhecimentos básicos de estatística.",
+    "benefits": "Ambiente de trabalho colaborativo, aprendizado contínuo, horários flexíveis, vale-refeição, seguro saúde, auxílio educação.",
+    "hiringOrganization": {
+      "name": "Soluções Empresariais",
+      "logo": "https://remotive.com/web/image/hr.job/1665498/logo/",
+      "applyLink": "https://solucoestecnologicas.com/carreiras",
+      "instagram": "@estagiar.io",
+      "desc": "Somos uma empresa de tecnologia inovadora, focada em soluções disruptivas que transformam o mundo por meio da tecnologia.",
+      "about": "Soluções Empresariais é uma consultoria de negócios que ajuda empresas a alcançar seus objetivos por meio de análises de dados e insights. Estamos procurando um estagiário de Business Intelligence para se juntar à nossa equipe e ajudar a impulsionar o sucesso de nossos clientes."
+    },
+    "baseSalary": {
+      "currency": "BRL",
+      "value": 1500
+    }
+  },
+  {
+    "title": "Estagiário de Desenvolvimento Front-End",
+    "image": "https://remotive.com/web/image/hr.job/1665498/logo/",
+    "jobLocationType": "Presencial",
+    "datePosted": "2023-05-08 00:00:00",
+    "desc": "Buscamos um estagiário de desenvolvimento para se juntar à nossa equipe de tecnologia. Você irá trabalhar em projetos desafiadores, colaborar com desenvolvedores experientes e aprender com as mais recentes tendências e tecnologias em desenvolvimento. Oferecemos uma bolsa-auxílio competitiva e a oportunidade de crescer em uma empresa de tecnologia inovadora. Candidate-se agora!",
+    "occupationalCategory": ["Desenvolvimento Front-End","T.I"],
+    "desiredResponsibility": "Desenvolver interfaces de usuário atraentes e responsivas, colaborar com a equipe de design para implementar designs de alta qualidade, garantir que o código seja escalável, testável e fácil de manter, manter-se atualizado com as tendências e tecnologias em desenvolvimento front-end.",
+    "nececessaryKnowledge": "HTML, CSS, JavaScript, frameworks de front-end como React, Vue ou Angular, Git, ferramentas de desenvolvimento como VS Code ou WebStorm, design responsivo e mobile-first, noções básicas de UX/UI.",
+    "benefits": "Bolsa-auxílio competitiva, horários flexíveis, ambiente de trabalho descontraído e colaborativo, plano de carreira, acesso a treinamentos e eventos de desenvolvimento.",
+    "hiringOrganization": {
+      "name": "Innovatech",
+      "logo": "https://remotive.com/web/image/hr.job/1665498/logo/",
+      "applyLink": "https://innovatech.com.br/trabalhe-conosco/",
+      "instagram": "@estagiar.io",
+      "desc": "Somos uma empresa de tecnologia inovadora, focada em soluções disruptivas que transformam o mundo por meio da tecnologia.",
+      "about": "A Innovatech é uma startup de tecnologia que busca transformar o mundo por meio da inovação. Estamos procurando um estagiário de desenvolvimento front-end para se juntar à nossa equipe e nos ajudar a criar soluções tecnológicas de alta qualidade para nossos clientes."
+    },
+    "baseSalary": {
+      "currency": "BRL",
+      "value": 1800
+    }
+  }
+]

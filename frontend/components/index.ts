@@ -1,0 +1,16 @@
+export { default as Alert } from "./Alert/Alert";
+export { default as Alert404 } from "./Alert/Alert404";
+export { default as AlertBrief } from "./Alert/AlertBrief";
+export { default as CardCompany } from "./CardCompany/CardCompany";
+export { default as CardForm } from "./CardForm/CardForm";
+export { default as CardJob } from "./CardJob/CardJob";
+export { default as Features } from "./Features/Features";
+export { default as Footer } from "./Footer/Footer";
+export { default as Hero } from "./Hero/Hero";
+export { default as Job } from "./Job/Job";
+export { default as LoginForm } from "./LoginForm/LoginForm";
+export { default as NavBar } from "./NavBar/NavBar";
+export { default as RegisterForm } from "./RegisterForm/RegisterForm";
+export { default as Testimonials } from "./Testimonials/Testimonials";
+export { default as Vaga } from "./Vaga/Vaga";
+export { default as Vagas } from "./Vagas/Vagas";
