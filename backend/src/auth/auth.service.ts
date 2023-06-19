@@ -23,8 +23,10 @@ export class AuthService {
     if (!isPasswordValid) {
       throw new BadRequestException('Email ou senha incorretos');
     }
+    const secretKey = 'sua-chave-secreta';
+    const tokenPayload = { userId: user.id, userType: user.type };
+    const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1d' });
 
-    const token = jwt.sign({ userId: user.id }, '1d');
     return token;
   }
 
@@ -32,6 +34,7 @@ export class AuthService {
     fullName: string,
     email: string,
     password: string,
+    type: string,
   ): Promise<string> {
     const existingUser = await this.prisma.user.findFirst({
       where: {
@@ -49,10 +52,13 @@ export class AuthService {
           fullName: fullName,
           email: email,
           password: hashedPassword,
+          type: type,
         },
       });
 
-      const token = jwt.sign({ userId: newUser.id }, '1d');
+      const secretKey = 'sua-chave-secreta';
+      const tokenPayload = { userId: newUser.id, userType: newUser.type };
+      const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1d' });
       return token;
     }
   }

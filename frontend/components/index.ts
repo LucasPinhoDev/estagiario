@@ -1,9 +1,13 @@
 export { default as Alert } from "./Alert/Alert";
 export { default as Alert404 } from "./Alert/Alert404";
 export { default as AlertBrief } from "./Alert/AlertBrief";
+export { default as Candidatos } from "./Candidatos/Candidatos";
 export { default as CardCompany } from "./CardCompany/CardCompany";
 export { default as CardForm } from "./CardForm/CardForm";
 export { default as CardJob } from "./CardJob/CardJob";
+export { default as CreateJob } from "./CreateJob/CreateJob";
+export { default as EditCompany } from "./EditCompany/EditCompany";
+export { default as EditJob } from "./EditJob/EditJob";
 export { default as Features } from "./Features/Features";
 export { default as Footer } from "./Footer/Footer";
 export { default as Hero } from "./Hero/Hero";

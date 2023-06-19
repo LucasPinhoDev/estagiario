@@ -25,10 +25,15 @@ export default function SignupCard() {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [type, setType] = useState("");
+
   const router = useRouter();
+
+  const handleTypeChange = (e: any) => {
+    setType(e.target.value);
+  };
 
   const handleSignup = async () => {
     try {
@@ -36,11 +41,17 @@ export default function SignupCard() {
         setErrorMessage("As senhas não coincidem");
         return;
       }
+      let typeUser = "common";
+
+      console.log(type);
+
+      if (type == "true") typeUser = "company";
 
       const userData = {
         email: email,
         fullName: fullName,
         password: password,
+        type: typeUser,
       };
 
       const response = await axios.post(
@@ -50,7 +61,7 @@ export default function SignupCard() {
 
       if (response.status === 201) {
         localStorage.setItem("token", response.data.token);
-        router.push("/dashboard");
+        router.push("/companyBoard");
       } else {
         throw new Error(response.data);
       }
@@ -114,11 +125,11 @@ export default function SignupCard() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </FormControl>
-            <FormControl isRequired>
+            <FormControl id="type" isRequired>
               <FormLabel>Você é uma empresa?</FormLabel>
-              <Select>
-                <option value="option1">Não</option>
-                <option value="option2">Sim</option>
+              <Select value={type} onChange={handleTypeChange}>
+                <option value="false">Não</option>
+                <option value="true">Sim</option>
               </Select>
             </FormControl>
             <FormControl id="password" isRequired>

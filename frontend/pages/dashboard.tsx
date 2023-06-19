@@ -24,7 +24,7 @@ function Dashboard() {
       return;
     }
 
-    if (userType !== "company" || userType) {
+    if (userType !== "company" || !userType) {
       router.push("/vagas"); // Redireciona para uma página de não autorizado
       return;
     }

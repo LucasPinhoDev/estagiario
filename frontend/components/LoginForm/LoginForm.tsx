@@ -19,7 +19,7 @@ import { useEffect, useState } from "react";
 export default function SimpleCard() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -42,16 +42,14 @@ export default function SimpleCard() {
         password,
       });
 
-      console.log(response);
-
       if (response.status === 201) {
         localStorage.setItem("token", response.data.token);
-        router.push("/dashboard");
+        router.push("/companyBoard");
       } else {
-        setError("Erro ao fazer login. Tente novamente mais tarde.");
+        setErrorMessage("Erro ao fazer login. Tente novamente mais tarde.");
       }
     } catch (error) {
-      setError("Credenciais inválidas. Verifique seu email e senha.");
+      setErrorMessage("Credenciais inválidas. Verifique seu email e senha.");
       console.error(error);
     }
   };
@@ -96,14 +94,13 @@ export default function SimpleCard() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {errorMessage && (
+                <Text color="red.500" mt={2} fontSize="sm">
+                  {errorMessage}
+                </Text>
+              )}
             </FormControl>
             <Stack spacing={10}>
-              <Stack
-                direction={{ base: "column", sm: "row" }}
-                justify={"space-between"}
-              >
-                {/* <Link color={"blue.400"}>Esqueceu sua senha?</Link> */}
-              </Stack>
               <Button
                 bg={"blue.400"}
                 color={"white"}

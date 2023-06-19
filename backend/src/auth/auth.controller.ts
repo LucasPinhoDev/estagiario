@@ -6,8 +6,6 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() loginData: { email: string; password: string }) {
-    console.log(loginData.email + ' @@@');
-
     const token = await this.authService.login(
       loginData.email,
       loginData.password,
@@ -19,9 +17,15 @@ export class AuthController {
   async register(
     @Body('fullName') fullName: string,
     @Body('email') email: string,
+    @Body('type') type: string,
     @Body('password') password: string,
   ): Promise<string> {
-    const token = await this.authService.register(fullName, email, password);
+    const token = await this.authService.register(
+      fullName,
+      email,
+      password,
+      type,
+    );
     return token;
   }
 }
