@@ -29,7 +29,7 @@ export class AuthService {
   }
 
   async register(
-    username: string,
+    fullName: string,
     email: string,
     password: string,
   ): Promise<string> {
@@ -41,20 +41,20 @@ export class AuthService {
 
     if (existingUser) {
       throw new BadRequestException('E-mail já existente');
+    } else {
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const newUser = await this.prisma.user.create({
+        data: {
+          fullName: fullName,
+          email: email,
+          password: hashedPassword,
+        },
+      });
+
+      const token = jwt.sign({ userId: newUser.id }, '1d');
+      return token;
     }
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    const newUser = await this.prisma.user.create({
-      data: {
-        username: username,
-        email: email,
-        password: hashedPassword,
-      },
-    });
-
-    const token = jwt.sign({ userId: newUser.id }, '1d');
-    return token;
   }
 
   async validateUserById(userId: string) {
@@ -65,5 +65,9 @@ export class AuthService {
     });
 
     return user;
+  }
+
+  public async hashPassword(password: string): Promise<string> {
+    return await bcrypt.hash(password, 10);
   }
 }

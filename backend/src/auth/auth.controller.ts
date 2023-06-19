@@ -17,11 +17,11 @@ export class AuthController {
 
   @Post('register')
   async register(
-    @Body('username') username: string,
+    @Body('fullName') fullName: string,
     @Body('email') email: string,
     @Body('password') password: string,
   ): Promise<string> {
-    const token = await this.authService.register(username, email, password);
+    const token = await this.authService.register(fullName, email, password);
     return token;
   }
 }

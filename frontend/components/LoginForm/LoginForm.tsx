@@ -7,7 +7,9 @@ import {
   FormLabel,
   Image,
   Input,
+  Link,
   Stack,
+  Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -79,7 +81,7 @@ export default function SimpleCard() {
           p={8}
         >
           <Stack spacing={4}>
-            <FormControl id="email">
+            <FormControl id="email" w="300px">
               <FormLabel>Email</FormLabel>
               <Input
                 type="email"
@@ -112,6 +114,13 @@ export default function SimpleCard() {
               >
                 Entrar
               </Button>
+            </Stack>
+            <Stack pt={3}>
+              <Text align={"center"}>
+                <Link href="/register" color={"blue.400"}>
+                  Fazer uma Conta
+                </Link>
+              </Text>
             </Stack>
           </Stack>
         </Box>

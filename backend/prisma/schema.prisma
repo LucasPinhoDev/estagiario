@@ -10,10 +10,80 @@ datasource db {
   url      = "postgresql://root:root@localhost:5432/estag-backend"
 }
 
-
 model User {
+  id    String @id @default(uuid())
+  email String @unique
+
+  fullName String?
+  password String?
+  type     String?
+  linkedin String?
+  image    String?
+
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  deletedAt   DateTime?
+  JobsToUsers JobsToUsers[]
+
+  @@map("users")
+}
+
+model Job {
+  id                    String  @id @default(uuid())
+  title                 String
+  jobLocationType       String
+  desc                  String?
+  desiredResponsibility String?
+  nececessaryKnowledge  String?
+  benefits              String?
+  value                 Int?
+  companyId             String?
+
+  company     Company?      @relation(fields: [companyId], references: [id])
+  jobsToUsers JobsToUsers[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@map("jobs")
+}
+
+model Company {
+  id          String  @id @default(uuid())
+  name        String
+  website     String  @unique
+  logo        String?
+  location    String?
+  applyLink   String?
+  instagram   String?
+  desc        String?
+  linkedin    String?
+  description String?
+
+  jobs        Job[]
+  jobsToUsers JobsToUsers[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  @@map("companies")
+}
+
+model JobsToUsers {
   id        String  @id @default(uuid())
-  username  String  @unique
-  email     String  @unique
-  password  String
+  userId    String
+  jobId     String
+  companyId String?
+
+  createdAt DateTime  @default(now())
+  deletedAt DateTime?
+
+  user    User     @relation(fields: [userId], references: [id])
+  job     Job      @relation(fields: [jobId], references: [id])
+  Company Company? @relation(fields: [companyId], references: [id])
+
+  @@unique([userId, jobId])
+  @@map("jobs_to_users")
 }
