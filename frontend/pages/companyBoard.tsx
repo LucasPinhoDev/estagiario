@@ -59,21 +59,19 @@ export default function Sidebar({}: { children: ReactNode }) {
       return;
     }
 
-    const secretKey = "sua-chave-secreta"; // Defina sua chave secreta aqui
-
     try {
+      const secretKey = "minhaChavePrivadaSuperSecreta";
       const decodedToken = jwt.verify(token, secretKey) as {
         userId: string;
         userType: string;
       };
 
-      console.log("ID do usuário:", decodedToken.userId);
-      console.log("Tipo de usuário:", decodedToken.userType);
-
-      // Restante do seu código aqui
+      if (decodedToken.userType !== "company" || !decodedToken.userType) {
+        router.push("/vagas");
+        return;
+      }
     } catch (error) {
       console.error("Erro ao verificar o token:", error);
-      // Trate o erro de verificação do token adequadamente
     }
 
     setIsLoading(false);
@@ -285,9 +283,6 @@ const MobileNav = ({ ...rest }: MobileProps) => {
                   ml="2"
                 >
                   <Text fontSize="sm">Justina Clark</Text>
-                  <Text fontSize="xs" color="gray.600">
-                    Empresa
-                  </Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>
                   <FiChevronDown />

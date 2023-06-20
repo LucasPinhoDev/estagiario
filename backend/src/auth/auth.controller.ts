@@ -15,16 +15,19 @@ export class AuthController {
 
   @Post('register')
   async register(
-    @Body('fullName') fullName: string,
-    @Body('email') email: string,
-    @Body('type') type: string,
-    @Body('password') password: string,
-  ): Promise<string> {
+    @Body()
+    registerData: {
+      fullName: string;
+      email: string;
+      type: string;
+      password: string;
+    },
+  ) {
     const token = await this.authService.register(
-      fullName,
-      email,
-      password,
-      type,
+      registerData.fullName,
+      registerData.email,
+      registerData.password,
+      registerData.type,
     );
     return token;
   }

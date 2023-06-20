@@ -23,7 +23,8 @@ export class AuthService {
     if (!isPasswordValid) {
       throw new BadRequestException('Email ou senha incorretos');
     }
-    const secretKey = 'sua-chave-secreta';
+
+    const secretKey = 'minhaChavePrivadaSuperSecreta'; // Defina sua chave privada aqui
     const tokenPayload = { userId: user.id, userType: user.type };
     const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1d' });
 
@@ -56,9 +57,8 @@ export class AuthService {
         },
       });
 
-      const secretKey = 'sua-chave-secreta';
-      const tokenPayload = { userId: newUser.id, userType: newUser.type };
-      const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1d' });
+      const tokenPayload = { userId: existingUser.id, userType: newUser.type };
+      const token = jwt.sign(tokenPayload, '1d');
       return token;
     }
   }
