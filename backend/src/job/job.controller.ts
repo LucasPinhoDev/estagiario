@@ -12,9 +12,10 @@ export class JobController {
       jobLocationType: string;
       desc: string;
       desiredResponsibility: string;
-      nececessaryKnowledge: string;
+      necessaryKnowledge: string;
       benefits: string;
       value: number;
+      companyId: string;
     },
   ) {
     const createdJob = await this.jobService.createJob(jobData);

@@ -38,7 +38,7 @@ interface Hit {
   jobLocationType: string;
   datePosted: string;
   desiredResponsibility: string;
-  nececessaryKnowledge: string;
+  necceessaryKnowledge: string;
   benefits: string;
   hiringOrganization: {
     name: string;

@@ -57,7 +57,7 @@ export class AuthService {
         },
       });
 
-      const tokenPayload = { userId: existingUser.id, userType: newUser.type };
+      const tokenPayload = { userId: newUser.id, userType: newUser.type };
       const token = jwt.sign(tokenPayload, '1d');
       return token;
     }

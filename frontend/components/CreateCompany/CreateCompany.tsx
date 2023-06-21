@@ -4,17 +4,21 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Text,
   Textarea,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React, { useState } from "react";
 
-const EditCompany = () => {
+const CreateCompany = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     website: "",
     logo: "",
     location: "",
-    applyLink: "",
     instagram: "",
     desc: "",
     linkedin: "",
@@ -29,29 +33,51 @@ const EditCompany = () => {
     }));
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    // Aqui você pode fazer o envio dos dados do formulário para a API ou fazer o tratamento necessário.
 
-    // Resetar os campos após o envio
-    setFormData({
-      name: "",
-      website: "",
-      logo: "",
-      location: "",
-      applyLink: "",
-      instagram: "",
-      desc: "",
-      linkedin: "",
-      description: "",
-    });
+    setSuccessMessage("");
+    setErrorMessage("");
+
+    const token = localStorage.getItem("token");
+
+    try {
+      const dataToSend = {
+        ...formData,
+        token,
+      };
+
+      const response = await axios.post(
+        "http://localhost:3100/company/createCompany",
+        dataToSend
+      );
+
+      if (response.status === 201) {
+        setFormData({
+          name: "",
+          website: "",
+          logo: "",
+          location: "",
+
+          instagram: "",
+          desc: "",
+          linkedin: "",
+          description: "",
+        });
+        setSuccessMessage("Empresa cadastrada com sucesso!");
+      } else {
+        setErrorMessage("Erro ao enviar os dados:" + response.status);
+      }
+    } catch (error) {
+      setErrorMessage("Erro ao enviar os dados:" + error);
+    }
   };
 
   return (
     <Box bg="white" p={4}>
       <h1>Editar Empresa</h1>
       <form onSubmit={handleSubmit}>
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel>Nome:</FormLabel>
           <Input
             type="text"
@@ -61,7 +87,7 @@ const EditCompany = () => {
           />
         </FormControl>
 
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel>Website:</FormLabel>
           <Input
             type="text"
@@ -81,7 +107,7 @@ const EditCompany = () => {
           />
         </FormControl>
 
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel>Localização:</FormLabel>
           <Input
             type="text"
@@ -91,17 +117,7 @@ const EditCompany = () => {
           />
         </FormControl>
 
-        <FormControl>
-          <FormLabel>Link de Candidatura:</FormLabel>
-          <Input
-            type="text"
-            name="applyLink"
-            value={formData.applyLink}
-            onChange={handleChange}
-          />
-        </FormControl>
-
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel>Instagram:</FormLabel>
           <Input
             type="text"
@@ -111,7 +127,7 @@ const EditCompany = () => {
           />
         </FormControl>
 
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel>Descrição:</FormLabel>
           <Textarea
             name="desc"
@@ -120,7 +136,7 @@ const EditCompany = () => {
           ></Textarea>
         </FormControl>
 
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel>LinkedIn:</FormLabel>
           <Input
             type="text"
@@ -130,7 +146,7 @@ const EditCompany = () => {
           />
         </FormControl>
 
-        <FormControl>
+        <FormControl isRequired>
           <FormLabel>Descrição Completa:</FormLabel>
           <Textarea
             name="description"
@@ -138,7 +154,16 @@ const EditCompany = () => {
             onChange={handleChange}
           ></Textarea>
         </FormControl>
-
+        {errorMessage && (
+          <Text color="red.500" mt={2} fontSize="sm">
+            {errorMessage}
+          </Text>
+        )}
+        {successMessage && (
+          <Text color="green.500" mt={2} fontSize="sm">
+            {successMessage}
+          </Text>
+        )}
         <Button type="submit" my="4" bg={"green.400"}>
           Salvar
         </Button>
@@ -147,4 +172,4 @@ const EditCompany = () => {
   );
 };
 
-export default EditCompany;
+export default CreateCompany;

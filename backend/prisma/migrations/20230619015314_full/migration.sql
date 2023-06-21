@@ -21,7 +21,7 @@ CREATE TABLE "jobs" (
     "jobLocationType" TEXT NOT NULL,
     "desc" TEXT,
     "desiredResponsibility" TEXT,
-    "nececessaryKnowledge" TEXT,
+    "necessaryKnowledge" TEXT,
     "benefits" TEXT,
     "value" INTEGER,
     "companyId" TEXT,

@@ -35,27 +35,6 @@ const EditJob = () => {
         value: "",
       },
     },
-    {
-      id: "2",
-      title: "Job 2",
-      jobLocationType: "Location 2",
-      desc: "Description 2",
-      desiredResponsibility: "Responsibility 2",
-      necessaryKnowledge: "Knowledge 2",
-      benefits: "Benefits 2",
-      value: "Value 2",
-      isOpen: false,
-      isEditing: false,
-      editFormData: {
-        title: "",
-        jobLocationType: "",
-        desc: "",
-        desiredResponsibility: "",
-        necessaryKnowledge: "",
-        benefits: "",
-        value: "",
-      },
-    },
   ]);
 
   const handleToggle = (jobId: any) => {
@@ -79,7 +58,7 @@ const EditJob = () => {
           return {
             ...job,
             isEditing: !job.isEditing,
-            editFormData: { ...job.editFormData }, // Criar uma cópia do estado de edição para cada card
+            editFormData: { ...job.editFormData },
           };
         }
         return job;

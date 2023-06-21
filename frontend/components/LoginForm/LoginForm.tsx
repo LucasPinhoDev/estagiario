@@ -20,12 +20,19 @@ export default function SimpleCard() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    // Verificar se o usuário já está autenticado
     if (isAuthenticated()) {
       router.push("/vagas");
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const msg = urlParams.get("msg");
+
+    if (msg === "success") {
+      setSuccessMessage("Cadastro realizado com sucesso!");
     }
   }, []);
 
@@ -97,6 +104,11 @@ export default function SimpleCard() {
               {errorMessage && (
                 <Text color="red.500" mt={2} fontSize="sm">
                   {errorMessage}
+                </Text>
+              )}
+              {successMessage && (
+                <Text color="green.500" mt={2} fontSize="sm">
+                  {successMessage}
                 </Text>
               )}
             </FormControl>

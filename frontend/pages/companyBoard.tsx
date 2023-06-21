@@ -26,7 +26,7 @@ import React, { ReactNode, ReactText, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { FiChevronDown, FiCompass, FiHome, FiTrendingUp } from "react-icons/fi";
 
-import { CreateJob, EditCompany, EditJob } from "../components";
+import { CreateCompany, CreateJob, EditJob } from "../components";
 
 interface LinkItemProps {
   name: string;
@@ -110,7 +110,7 @@ export default function Sidebar({}: { children: ReactNode }) {
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {/* Renderizar o conteúdo com base no item ativo */}
-        {activeItem === "Home" && <EditCompany />}
+        {activeItem === "Home" && <CreateCompany />}
         {activeItem === "Criar Vagas" && <CreateJob />}
         {activeItem === "Editar Vagas" && <EditJob />}
         {activeItem === "Candidatos" && (

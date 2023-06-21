@@ -43,8 +43,6 @@ export default function SignupCard() {
       }
       let typeUser = "common";
 
-      console.log(type);
-
       if (type == "true") typeUser = "company";
 
       const userData = {
@@ -60,8 +58,7 @@ export default function SignupCard() {
       );
 
       if (response.status === 201) {
-        localStorage.setItem("token", response.data.token);
-        router.push("/companyBoard");
+        router.push("/login?msg=success");
       } else {
         throw new Error(response.data);
       }
@@ -71,9 +68,9 @@ export default function SignupCard() {
         error.response &&
         error.response.status === 400
       ) {
-        setErrorMessage(error.response.data.message); // Exibe a mensagem de erro do servidor
+        setErrorMessage(error.response.data.message);
       } else {
-        setErrorMessage("Erro durante o cadastro. Tente novamente mais tarde."); // Mensagem genérica de erro
+        setErrorMessage("Erro durante o cadastro. Tente novamente mais tarde.");
       }
       console.error(error);
     }

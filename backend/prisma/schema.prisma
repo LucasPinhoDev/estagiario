@@ -24,6 +24,7 @@ model User {
   updatedAt   DateTime      @updatedAt
   deletedAt   DateTime?
   JobsToUsers JobsToUsers[]
+  Company     Company[]
 
   @@map("users")
 }
@@ -34,8 +35,9 @@ model Job {
   jobLocationType       String
   desc                  String?
   desiredResponsibility String?
-  nececessaryKnowledge  String?
+  necessaryKnowledge    String?
   benefits              String?
+  applyLink             String?
   value                 Int?
   companyId             String?
 
@@ -55,11 +57,13 @@ model Company {
   website     String  @unique
   logo        String?
   location    String?
-  applyLink   String?
   instagram   String?
   desc        String?
   linkedin    String?
   description String?
+  UserId      String?
+
+  User User? @relation(fields: [UserId], references: [id])
 
   jobs        Job[]
   jobsToUsers JobsToUsers[]
