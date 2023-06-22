@@ -1,0 +1,7 @@
+name: backend
+env: node
+buildCommand: |
+  yarn install
+  yarn build
+  yarn migrate
+startCommand: yarn start:prod
