@@ -63,7 +63,7 @@ const CreateJob = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:3100/job/createJob",
+        `${process.env.FETCH_URL}/job/createJob`,
         dataToSend
       );
 
@@ -94,7 +94,7 @@ const CreateJob = () => {
     const fetchUserCompanies = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3100/company/find",
+          `${process.env.FETCH_URL}/company/find`,
           { token: localStorage.getItem("token"), find: "byId" }
         );
         console.log(response.data);

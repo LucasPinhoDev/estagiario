@@ -1,4 +1,5 @@
 import "./style.css";
+import "dotenv/config";
 
 import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";

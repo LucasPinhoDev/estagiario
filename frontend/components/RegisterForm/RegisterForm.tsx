@@ -53,7 +53,7 @@ export default function SignupCard() {
       };
 
       const response = await axios.post(
-        "http://localhost:3100/auth/register",
+        `${process.env.FETCH_URL}/auth/register`,
         userData
       );
 

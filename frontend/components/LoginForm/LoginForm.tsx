@@ -1,3 +1,5 @@
+import "dotenv/config";
+
 import {
   Box,
   Button,
@@ -43,8 +45,11 @@ export default function SimpleCard() {
   };
 
   const handleLogin = async () => {
+    const apiUrl = process.env.FETCH_URL;
+    console.log(apiUrl);
+
     try {
-      const response = await axios.post("http://localhost:3100/auth/login", {
+      const response = await axios.post(`${process.env.FETCH_URL}/auth/login`, {
         email,
         password,
       });

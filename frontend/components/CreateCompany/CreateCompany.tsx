@@ -48,7 +48,7 @@ const CreateCompany = () => {
       };
 
       const response = await axios.post(
-        "http://localhost:3100/company/createCompany",
+        `${process.env.FETCH_URL}/company/createCompany`,
         dataToSend
       );
 

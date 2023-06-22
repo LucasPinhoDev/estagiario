@@ -9,45 +9,27 @@ async function seed() {
     const password =
       '$2b$10$360gLSTpZuNBjWGWV2atR.B9nlbYJnAKa.ezLER5avGS4QDB/ZLrq';
 
-    try {
-      const user = await prisma.user.findFirst({
-        where: { email: adminEmail },
-      });
-      if (!user) {
-        await prisma.user.create({
-          data: {
-            email: adminEmail,
-            fullName: 'Admin',
-            type: 'company',
-            password: password,
-            linkedin: 'linkedin.com/user1',
-            image: 'user1.jpg',
-          },
-        });
-      }
-    } catch (error) {
-      console.error('Error creating admin:', error);
-    }
+    const user1 = await prisma.user.create({
+      data: {
+        email: adminEmail,
+        fullName: 'Admin',
+        type: 'company',
+        password: password,
+        linkedin: 'linkedin.com/user1',
+        image: 'user1.jpg',
+      },
+    });
 
-    try {
-      const user = await prisma.user.findFirst({
-        where: { email: userEmail },
-      });
-      if (!user) {
-        await prisma.user.create({
-          data: {
-            email: userEmail,
-            fullName: 'User',
-            type: 'common',
-            password: password,
-            linkedin: 'linkedin.com/user',
-            image: 'user.jpg',
-          },
-        });
-      }
-    } catch (error) {
-      console.error('Error creating user:', error);
-    }
+    const user2 = await prisma.user.create({
+      data: {
+        email: userEmail,
+        fullName: 'User',
+        type: 'common',
+        password: password,
+        linkedin: 'linkedin.com/user',
+        image: 'user.jpg',
+      },
+    });
 
     const company1 = await prisma.company.create({
       data: {
@@ -85,19 +67,7 @@ async function seed() {
         benefits: 'Benefits 1',
         value: 1000,
         companyId: company1.id,
-      },
-    });
-
-    await prisma.job.create({
-      data: {
-        title: 'Job 2',
-        jobLocationType: 'Location 2',
-        desc: 'Description 2',
-        desiredResponsibility: 'Responsibility 2',
-        necessaryKnowledge: 'Knowledge 2',
-        benefits: 'Benefits 2',
-        value: 2000,
-        companyId: company2.id,
+        userId: user1.id,
       },
     });
 

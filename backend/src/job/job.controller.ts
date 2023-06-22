@@ -22,4 +22,15 @@ export class JobController {
 
     return createdJob;
   }
+
+  @Post('find')
+  async findJob(
+    @Body()
+    jobData: {
+      token: string;
+      find: string;
+    },
+  ) {
+    return await this.jobService.findJob(jobData);
+  }
 }

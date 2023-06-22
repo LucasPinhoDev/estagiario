@@ -23,6 +23,7 @@
     "algoliasearch": "^4.17.0",
     "antd": "^5.4.7",
     "axios": "^1.4.0",
+    "dotenv": "^16.3.1",
     "eslint": "^8.30.0",
     "eslint-config-next": "13.0.7",
     "eslint-plugin-prettier": "^4.2.1",

@@ -1,5 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  NotFoundException,
+  Injectable,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import * as jwt from 'jsonwebtoken';
 
 import { Job } from '@prisma/client';
 
@@ -43,6 +48,38 @@ export class JobService {
       });
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  async findJob(jobData: { token: string; find: string }): Promise<Job[]> {
+    const { token, find } = jobData;
+
+    const secretKey = 'minhaChavePrivadaSuperSecreta';
+
+    const decodedToken = jwt.verify(token, secretKey) as {
+      userId: string;
+      userType: string;
+    };
+
+    if (find === 'many') {
+      try {
+        const jobs = await this.prisma.job.findMany({
+          where: {
+            userId: decodedToken.userId,
+          },
+        });
+
+        if (jobs.length > 0) {
+          console.log(jobs);
+          return jobs;
+        } else {
+          throw new NotFoundException('Empresas não encontradas');
+        }
+      } catch (error) {
+        throw new BadRequestException('Erro ao buscar as empresas.' + error);
+      }
+    } else {
+      throw new BadRequestException('Critério de pesquisa inválido');
     }
   }
 }

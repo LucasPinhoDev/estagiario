@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgresql://root:root@localhost:5432/estag-backend"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -25,6 +25,7 @@ model User {
   deletedAt   DateTime?
   JobsToUsers JobsToUsers[]
   Company     Company[]
+  Job         Job[]
 
   @@map("users")
 }
@@ -40,8 +41,10 @@ model Job {
   applyLink             String?
   value                 Int?
   companyId             String?
+  userId                String?
 
   company     Company?      @relation(fields: [companyId], references: [id])
+  user        User?         @relation(fields: [userId], references: [id])
   jobsToUsers JobsToUsers[]
 
   createdAt DateTime  @default(now())
