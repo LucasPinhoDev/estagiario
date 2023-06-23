@@ -107,6 +107,7 @@ export default function WithSubnavigation() {
                   color={"white"}
                   bg={"red.400"}
                   href={"/#"}
+                  ml="50px"
                   _hover={{
                     bg: "red.300",
                   }}
@@ -125,6 +126,7 @@ export default function WithSubnavigation() {
                   color={"white"}
                   bg={"green.400"}
                   href={"/login"}
+                  ml="50px"
                   _hover={{
                     bg: "green.300",
                   }}
