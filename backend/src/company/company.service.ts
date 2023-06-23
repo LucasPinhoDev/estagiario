@@ -40,8 +40,6 @@ export class CompanyService {
 
     const secretKey = 'minhaChavePrivadaSuperSecreta';
 
-    console.log(token);
-
     const decodedToken = jwt.verify(token, secretKey) as {
       userId: string;
       userType: string;

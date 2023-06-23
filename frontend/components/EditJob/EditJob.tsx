@@ -10,32 +10,51 @@ import {
   Text,
   Textarea,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
+interface Job {
+  id: string;
+  title: string;
+  jobLocationType: string;
+  desc: string;
+  desiredResponsibility: string;
+  necessaryKnowledge: string;
+  benefits: string;
+  value: string;
+  isOpen: boolean;
+  isEditing: boolean;
+  editFormData: {
+    title: string;
+    jobLocationType: string;
+    desc: string;
+    desiredResponsibility: string;
+    necessaryKnowledge: string;
+    benefits: string;
+    value: string;
+  };
+}
 
 const EditJob = () => {
-  const [jobs, setJobs] = useState([
-    {
-      id: "1",
-      title: "Job 1",
-      jobLocationType: "Location 1",
-      desc: "Description 1",
-      desiredResponsibility: "Responsibility 1",
-      necessaryKnowledge: "Knowledge 1",
-      benefits: "Benefits 1",
-      value: "Value 1",
-      isOpen: false,
-      isEditing: false,
-      editFormData: {
-        title: "",
-        jobLocationType: "",
-        desc: "",
-        desiredResponsibility: "",
-        necessaryKnowledge: "",
-        benefits: "",
-        value: "",
-      },
-    },
-  ]);
+  const [jobs, setJobs] = useState<Job[]>([]);
+  useEffect(() => {
+    fetchJobs();
+  }, []);
+
+  const fetchJobs = async () => {
+    try {
+      const response = await axios.post(`${process.env.FETCH_URL}/job/find`, {
+        token: localStorage.getItem("token"),
+        find: "many",
+      });
+      const jobsData = response.data;
+      console.log(jobsData);
+
+      setJobs(jobsData);
+    } catch (error) {
+      console.error("Erro ao buscar os trabalhos:", error);
+    }
+  };
 
   const handleToggle = (jobId: any) => {
     setJobs((prevJobs) =>
@@ -84,7 +103,28 @@ const EditJob = () => {
     );
   };
 
-  const handleEditJob = (jobId: any) => {
+  const handleEditJob = async (jobId: any) => {
+    const updatedJob = jobs.find((job) => job.id === jobId);
+
+    if (
+      updatedJob &&
+      updatedJob.editFormData &&
+      Object.keys(updatedJob.editFormData).length > 0
+    ) {
+      try {
+        const response = await axios.post(
+          `${process.env.FETCH_URL}/job/update`,
+          {
+            jobData: updatedJob,
+          }
+        );
+
+        console.log("Trabalho atualizado com sucesso:", response.data);
+      } catch (error) {
+        console.error("Erro ao atualizar o trabalho:", error);
+      }
+    }
+
     setJobs((prevJobs) =>
       prevJobs.map((job) => {
         if (job.id === jobId) {
@@ -107,6 +147,19 @@ const EditJob = () => {
         return job;
       })
     );
+  };
+
+  const handleDelete = async (jobId: string) => {
+    try {
+      await axios.post(`${process.env.FETCH_URL}/job/delete`, {
+        jobId,
+      });
+      console.log("Vaga excluída com sucesso!");
+
+      setJobs((prevJobs) => prevJobs.filter((job) => job.id !== jobId));
+    } catch (error) {
+      console.error("Erro ao excluir a vaga:", error);
+    }
   };
 
   return (
@@ -191,12 +244,29 @@ const EditJob = () => {
                 </>
               ) : (
                 <>
-                  <Text>{job.jobLocationType}</Text>
-                  <Text>{job.desc}</Text>
-                  <Text>{job.desiredResponsibility}</Text>
-                  <Text>{job.necessaryKnowledge}</Text>
-                  <Text>{job.benefits}</Text>
-                  <Text>{job.value}</Text>
+                  <Text>
+                    <strong>Localização:</strong> {job.jobLocationType}
+                  </Text>
+                  <Text>
+                    <strong>Descrição: </strong>
+                    {job.desc}
+                  </Text>
+                  <Text>
+                    <strong>Responsabilidades: </strong>
+                    {job.desiredResponsibility}
+                  </Text>
+                  <Text>
+                    <strong>Conhecimento necessário: </strong>
+                    {job.necessaryKnowledge}
+                  </Text>
+                  <Text>
+                    <strong>Beneficios: </strong>
+                    {job.benefits}
+                  </Text>
+                  <Text>
+                    <strong>Valor da vaga: </strong>
+                    {job.value}
+                  </Text>
                   <Button
                     mt="2"
                     colorScheme="blue"
@@ -204,6 +274,15 @@ const EditJob = () => {
                     onClick={() => handleEditToggle(job.id)}
                   >
                     Modificar
+                  </Button>
+                  <Button
+                    mt="2"
+                    colorScheme="red"
+                    size="sm"
+                    ml="1"
+                    onClick={() => handleDelete(job.id)}
+                  >
+                    Excluir
                   </Button>
                 </>
               )}

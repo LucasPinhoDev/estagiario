@@ -21,6 +21,7 @@ export class JobService {
     benefits: string;
     value: number;
     companyId: string;
+    token: string;
   }): Promise<Job> {
     const {
       title,
@@ -31,7 +32,15 @@ export class JobService {
       benefits,
       value,
       companyId,
+      token,
     } = jobData;
+
+    const secretKey = 'minhaChavePrivadaSuperSecreta';
+
+    const decodedToken = jwt.verify(token, secretKey) as {
+      userId: string;
+      userType: string;
+    };
 
     try {
       return await this.prisma.job.create({
@@ -44,6 +53,7 @@ export class JobService {
           benefits,
           value,
           companyId,
+          userId: decodedToken.userId,
         },
       });
     } catch (error) {
@@ -66,11 +76,11 @@ export class JobService {
         const jobs = await this.prisma.job.findMany({
           where: {
             userId: decodedToken.userId,
+            deletedAt: null,
           },
         });
 
         if (jobs.length > 0) {
-          console.log(jobs);
           return jobs;
         } else {
           throw new NotFoundException('Empresas não encontradas');
@@ -80,6 +90,61 @@ export class JobService {
       }
     } else {
       throw new BadRequestException('Critério de pesquisa inválido');
+    }
+  }
+
+  async updateJob(data: { jobData: any }): Promise<Job> {
+    const { jobData } = data;
+
+    console.log(jobData); // Verifique se o objeto jobData está sendo recebido corretamente
+
+    const job = await this.prisma.job.findFirst({
+      where: {
+        id: jobData.id,
+        deletedAt: null,
+      },
+    });
+
+    if (job) {
+      try {
+        const updatedData = {
+          ...jobData.editFormData,
+          value: parseInt(jobData.editFormData.value),
+        };
+        return await this.prisma.job.update({
+          where: { id: jobData.id },
+          data: updatedData,
+        });
+      } catch (error) {
+        throw new BadRequestException('Erro ao atualizar a vaga: ' + error);
+      }
+    } else {
+      throw new BadRequestException('Critério inválido');
+    }
+  }
+
+  async deleteJob(data: { jobId: any }): Promise<void> {
+    const { jobId } = data;
+    console.log(jobId);
+
+    const job = await this.prisma.job.findFirst({
+      where: {
+        id: jobId,
+        deletedAt: null,
+      },
+    });
+
+    if (job) {
+      try {
+        await this.prisma.job.update({
+          where: { id: job.id },
+          data: { deletedAt: new Date() },
+        });
+      } catch (error) {
+        throw new BadRequestException('Erro ao atualizar a vaga: ' + error);
+      }
+    } else {
+      throw new BadRequestException('Critério inválido');
     }
   }
 }

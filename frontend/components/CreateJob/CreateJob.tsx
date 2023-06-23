@@ -60,6 +60,7 @@ const CreateJob = () => {
       const dataToSend = {
         ...formData,
         value: parseInt(formData.value, 10),
+        token: localStorage.getItem("token"),
       };
 
       const response = await axios.post(
