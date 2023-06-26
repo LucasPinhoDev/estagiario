@@ -10,45 +10,28 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import algoliasearch from "algoliasearch";
+import axios from "axios";
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import { AlertBrief, Footer, NavBar } from "../../components";
 
-const algoliaClient = algoliasearch(
-  "BXCTDNLOT5",
-  "26c479b16550a5f879d70dce816791e7"
-);
-const index = algoliaClient.initIndex("dev_estagiario");
-
 interface Vaga {
+  id: string;
   title: string;
-  occupationalCategory: string[];
-  desc: string;
-  image: string;
   jobLocationType: string;
-  datePosted: string;
+  desc: string;
   desiredResponsibility: string;
-  nececessaryKnowledge: string;
+  necessaryKnowledge: string;
   benefits: string;
-  hiringOrganization: {
+  value: number;
+  company: {
     name: string;
+    website: string;
     logo: string;
-    applyLink: string;
-    instagram: string;
-    desc: string;
-    about: string;
+    description: string;
   };
-  baseSalary: {
-    currency: string;
-    value: string;
-  };
-}
-
-interface AlgoliaVaga extends Vaga {
-  objectID: string;
 }
 
 function Job() {
@@ -62,8 +45,11 @@ function Job() {
     async function fetchVagaDetalhes() {
       try {
         if (id) {
-          const response = await index.getObject<AlgoliaVaga>(id as string);
-          setVaga(response);
+          const response = await axios.get(
+            `${process.env.FETCH_URL}/job/findById?id=${id}`
+          );
+
+          setVaga(response.data);
           setLoading(false);
         }
       } catch (error) {
@@ -111,7 +97,7 @@ function Job() {
               <Text fontSize="md" mb="30px">
                 <strong>Conhecimento necessário</strong>
                 <br></br>
-                {vaga.nececessaryKnowledge}
+                {vaga.necessaryKnowledge}
               </Text>
               <Text fontSize="md" mb="30px">
                 <strong>Benefícios</strong>
@@ -128,7 +114,7 @@ function Job() {
             mt={{ lg: "5px", sm: "-50px" }}
             mb="10px"
           >
-            <Center py={6}>
+            <Center pt={300}>
               <Box
                 maxW={"320px"}
                 w={"full"}
@@ -140,15 +126,15 @@ function Job() {
               >
                 <Avatar
                   size={"xl"}
-                  src={vaga.hiringOrganization.logo}
+                  src={vaga.company.logo}
                   mb={4}
                   pos={"relative"}
                 />
                 <Heading fontSize={"2xl"} fontFamily={"body"}>
-                  {vaga.hiringOrganization.name}
+                  {vaga.company.name}
                 </Heading>
                 <Text fontWeight={600} color={"gray.500"} mb={4}>
-                  {vaga.hiringOrganization.instagram}
+                  {vaga.company.website}
                 </Text>
                 <Text
                   textAlign={"center"}
@@ -156,7 +142,7 @@ function Job() {
                   px={3}
                   fontSize="sm"
                 >
-                  {vaga.hiringOrganization.desc}
+                  {vaga.company.description}
                 </Text>
 
                 <Stack
@@ -165,22 +151,16 @@ function Job() {
                   direction={"row"}
                   mt={6}
                 >
-                  {vaga.occupationalCategory.map((category) => (
-                    <Badge
-                      key={category}
-                      px={2}
-                      py={1}
-                      bg={useColorModeValue("gray.50", "gray.800")}
-                      fontWeight={"400"}
-                    >
-                      {`#${category}`}
-                    </Badge>
-                  ))}
+                  <Badge
+                    px={2}
+                    py={1}
+                    bg={useColorModeValue("gray.50", "gray.800")}
+                    fontWeight={"400"}
+                  >
+                    {`#${vaga.jobLocationType}`}
+                  </Badge>
                 </Stack>
-                <NextLink
-                  href={`${vaga.hiringOrganization.applyLink}`}
-                  passHref
-                >
+                <NextLink href={vaga.company?.website ?? ""} passHref>
                   <Stack mt={8} direction={"row"} spacing={4}>
                     <Button
                       flex={1}

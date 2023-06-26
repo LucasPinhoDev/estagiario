@@ -94,7 +94,6 @@ export class JobService {
   }
 
   async findAll(params: string): Promise<any[]> {
-    console.log(params + 'teste');
     if (params) {
       try {
         const jobs = await this.prisma.job.findMany({
@@ -139,11 +138,6 @@ export class JobService {
             id: true,
             title: true,
             desc: true,
-            company: {
-              select: {
-                logo: true,
-              },
-            },
           },
         });
 
@@ -151,6 +145,41 @@ export class JobService {
       } catch (error) {
         throw new BadRequestException('Erro ao buscar as vagas.' + error);
       }
+    }
+  }
+
+  async findById(id: string): Promise<any> {
+    try {
+      const job = await this.prisma.job.findFirst({
+        where: {
+          id,
+          deletedAt: null,
+        },
+        select: {
+          id: true,
+          title: true,
+          jobLocationType: true,
+          desc: true,
+          desiredResponsibility: true,
+          necessaryKnowledge: true,
+          benefits: true,
+          value: true,
+          company: {
+            select: {
+              name: true,
+              website: true,
+              logo: true,
+              description: true,
+            },
+          },
+        },
+      });
+
+      console.log(job);
+
+      return job;
+    } catch (error) {
+      throw new BadRequestException('Erro ao buscar as vagas.' + error);
     }
   }
 

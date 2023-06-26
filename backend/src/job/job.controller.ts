@@ -38,9 +38,12 @@ export class JobController {
 
   @Get('findAll')
   async findAll(@Query('params') params: string) {
-    console.log(params);
-
     return await this.jobService.findAll(params);
+  }
+
+  @Get('findById')
+  async findById(@Query('id') id: string) {
+    return await this.jobService.findById(id);
   }
 
   @Post('update')
