@@ -30,7 +30,6 @@ export class CompanyService {
       website,
       logo,
       location,
-
       instagram,
       desc,
       linkedin,
@@ -99,8 +98,71 @@ export class CompanyService {
       } catch (error) {
         throw new BadRequestException('Erro ao buscar as empresas.' + error);
       }
+    } else if (find === 'many') {
+      try {
+        const companies = await this.prisma.company.findMany({
+          where: {
+            UserId: decodedToken.userId,
+          },
+        });
+
+        if (companies.length > 0) {
+          //console.log(companies);
+          return companies;
+        } else {
+          throw new NotFoundException('Empresas não encontradas');
+        }
+      } catch (error) {
+        throw new BadRequestException('Erro ao buscar as empresas.' + error);
+      }
+    }
+  }
+
+  async updateCompany(data: { companyData: any }): Promise<Company> {
+    const { companyData } = data;
+
+    console.log(companyData + ' Update company ');
+
+    const company = await this.prisma.company.findFirst({
+      where: {
+        id: companyData.id,
+        deletedAt: null,
+      },
+    });
+
+    if (company) {
+      try {
+        return await this.prisma.company.update({
+          where: { id: companyData.id },
+          data: companyData.editFormData,
+        });
+      } catch (error) {
+        throw new BadRequestException('Erro ao atualizar a empresa: ' + error);
+      }
     } else {
-      throw new BadRequestException('Critério de pesquisa inválido');
+      throw new BadRequestException('Critério inválido');
+    }
+  }
+
+  async deleteCompany(data: { companyId: string }): Promise<void> {
+    const { companyId } = data;
+
+    const company = await this.prisma.company.findFirst({
+      where: {
+        id: companyId,
+      },
+    });
+
+    if (company) {
+      try {
+        await this.prisma.company.delete({
+          where: { id: company.id },
+        });
+      } catch (error) {
+        throw new BadRequestException('Erro ao excluir a empresa: ' + error);
+      }
+    } else {
+      throw new BadRequestException('Critério inválido');
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { JobService } from './job.service';
 import { Job } from '@prisma/client';
 @Controller('job')
@@ -34,6 +34,13 @@ export class JobController {
     },
   ) {
     return await this.jobService.findJob(jobData);
+  }
+
+  @Get('findAll')
+  async findAll(@Query('params') params: string) {
+    console.log(params);
+
+    return await this.jobService.findAll(params);
   }
 
   @Post('update')

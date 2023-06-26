@@ -1,3 +1,4 @@
+import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   Avatar,
   Box,
@@ -9,6 +10,7 @@ import {
   FlexProps,
   HStack,
   Icon,
+  IconButton,
   Image,
   Link,
   Menu,
@@ -26,7 +28,7 @@ import React, { ReactNode, ReactText, useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { FiChevronDown, FiCompass, FiHome, FiTrendingUp } from "react-icons/fi";
 
-import { CreateCompany, CreateJob, EditJob } from "../components";
+import { CreateCompany, CreateJob, EditCompany, EditJob } from "../components";
 
 interface LinkItemProps {
   name: string;
@@ -34,14 +36,15 @@ interface LinkItemProps {
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Home", icon: FiHome },
+  { name: "Criar mpresa", icon: FiHome },
+  { name: "Empresas", icon: FiHome },
   { name: "Criar Vagas", icon: FiTrendingUp },
   { name: "Editar Vagas", icon: FiTrendingUp },
   { name: "Candidatos", icon: FiCompass },
 ];
 
 export default function Sidebar({}: { children: ReactNode }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onOpen, isOpen, onClose } = useDisclosure();
   const [activeItem, setActiveItem] = useState<string>(LinkItems[0].name);
 
   const handleItemClick = (name: string) => {
@@ -53,6 +56,7 @@ export default function Sidebar({}: { children: ReactNode }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const userType = localStorage.getItem("userType");
 
     if (!token) {
       router.push("/login");
@@ -60,13 +64,7 @@ export default function Sidebar({}: { children: ReactNode }) {
     }
 
     try {
-      const secretKey = "minhaChavePrivadaSuperSecreta";
-      const decodedToken = jwt.verify(token, secretKey) as {
-        userId: string;
-        userType: string;
-      };
-
-      if (decodedToken.userType !== "company" || !decodedToken.userType) {
+      if (userType !== "company" || !userType) {
         router.push("/vagas");
         return;
       }
@@ -106,11 +104,11 @@ export default function Sidebar({}: { children: ReactNode }) {
           />
         </DrawerContent>
       </Drawer>
-      {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {/* Renderizar o conteúdo com base no item ativo */}
-        {activeItem === "Home" && <CreateCompany />}
+        {activeItem === "Criar mpresa" && <CreateCompany />}
+        {activeItem === "Empresas" && <EditCompany />}
         {activeItem === "Criar Vagas" && <CreateJob />}
         {activeItem === "Editar Vagas" && <EditJob />}
         {activeItem === "Candidatos" && (
@@ -225,7 +223,7 @@ interface MobileProps extends FlexProps {
   onOpen: () => void;
 }
 
-const MobileNav = ({ ...rest }: MobileProps) => {
+const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const router = useRouter();
 
   const handleLogout = () => {
@@ -245,6 +243,13 @@ const MobileNav = ({ ...rest }: MobileProps) => {
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
+      <IconButton
+        display={{ base: "flex", md: "none" }}
+        aria-label="Open menu"
+        icon={<HamburgerIcon />}
+        onClick={onOpen}
+        size="md"
+      />
       <Text
         display={{ base: "flex", md: "none" }}
         fontSize="2xl"
@@ -260,7 +265,6 @@ const MobileNav = ({ ...rest }: MobileProps) => {
           />
         </Link>
       </Text>
-
       <HStack spacing={{ base: "0", md: "6" }}>
         <Flex alignItems={"center"}>
           <Menu>

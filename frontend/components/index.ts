@@ -7,6 +7,7 @@ export { default as CardForm } from "./CardForm/CardForm";
 export { default as CardJob } from "./CardJob/CardJob";
 export { default as CreateCompany } from "./CreateCompany/CreateCompany";
 export { default as CreateJob } from "./CreateJob/CreateJob";
+export { default as EditCompany } from "./EditCompany/EditCompany";
 export { default as EditJob } from "./EditJob/EditJob";
 export { default as Features } from "./Features/Features";
 export { default as Footer } from "./Footer/Footer";

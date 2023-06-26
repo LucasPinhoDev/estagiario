@@ -1,5 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CompanyService } from './company.service';
+import { Company } from '@prisma/client';
 @Controller('company')
 export class CompanyController {
   constructor(private readonly companyService: CompanyService) {}
@@ -35,5 +36,17 @@ export class CompanyController {
     },
   ) {
     return await this.companyService.findCompany(companyData);
+  }
+
+  @Post('update')
+  async updateCompany(@Body() data: { companyData: Company }) {
+    console.log(data.companyData);
+
+    return await this.companyService.updateCompany(data);
+  }
+
+  @Post('delete')
+  async deleteCompany(@Body() data: { companyId: string }) {
+    return await this.companyService.deleteCompany(data);
   }
 }

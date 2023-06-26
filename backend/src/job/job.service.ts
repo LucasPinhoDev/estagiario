@@ -6,7 +6,7 @@ import {
 import { PrismaService } from '../prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
 
-import { Job } from '@prisma/client';
+import { Job, Prisma } from '@prisma/client';
 
 @Injectable()
 export class JobService {
@@ -90,6 +90,67 @@ export class JobService {
       }
     } else {
       throw new BadRequestException('Critério de pesquisa inválido');
+    }
+  }
+
+  async findAll(params: string): Promise<any[]> {
+    console.log(params + 'teste');
+    if (params) {
+      try {
+        const jobs = await this.prisma.job.findMany({
+          where: {
+            deletedAt: null,
+            OR: [
+              { title: { contains: params, mode: 'insensitive' } },
+              { desc: { contains: params, mode: 'insensitive' } },
+              {
+                desiredResponsibility: {
+                  contains: params,
+                  mode: 'insensitive',
+                },
+              },
+              { necessaryKnowledge: { contains: params, mode: 'insensitive' } },
+              { benefits: { contains: params, mode: 'insensitive' } },
+            ],
+          },
+          select: {
+            id: true,
+            title: true,
+            desc: true,
+            company: {
+              select: {
+                logo: true,
+              },
+            },
+          },
+        });
+
+        return jobs;
+      } catch (error) {
+        throw new BadRequestException('Erro ao buscar as vagas.' + error);
+      }
+    } else {
+      try {
+        const jobs = await this.prisma.job.findMany({
+          where: {
+            deletedAt: null,
+          },
+          select: {
+            id: true,
+            title: true,
+            desc: true,
+            company: {
+              select: {
+                logo: true,
+              },
+            },
+          },
+        });
+
+        return jobs;
+      } catch (error) {
+        throw new BadRequestException('Erro ao buscar as vagas.' + error);
+      }
     }
   }
 

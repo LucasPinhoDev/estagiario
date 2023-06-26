@@ -87,7 +87,7 @@ const CreateCompany = () => {
           />
         </FormControl>
 
-        <FormControl isRequired>
+        <FormControl>
           <FormLabel>Website:</FormLabel>
           <Input
             type="text"
@@ -117,7 +117,7 @@ const CreateCompany = () => {
           />
         </FormControl>
 
-        <FormControl isRequired>
+        <FormControl>
           <FormLabel>Instagram:</FormLabel>
           <Input
             type="text"
@@ -127,8 +127,8 @@ const CreateCompany = () => {
           />
         </FormControl>
 
-        <FormControl isRequired>
-          <FormLabel>Descrição:</FormLabel>
+        <FormControl>
+          <FormLabel>Descrição Curta:</FormLabel>
           <Textarea
             name="desc"
             value={formData.desc}
@@ -136,7 +136,7 @@ const CreateCompany = () => {
           ></Textarea>
         </FormControl>
 
-        <FormControl isRequired>
+        <FormControl>
           <FormLabel>LinkedIn:</FormLabel>
           <Input
             type="text"
@@ -147,7 +147,7 @@ const CreateCompany = () => {
         </FormControl>
 
         <FormControl isRequired>
-          <FormLabel>Descrição Completa:</FormLabel>
+          <FormLabel>Descrição:</FormLabel>
           <Textarea
             name="description"
             value={formData.description}
@@ -164,7 +164,7 @@ const CreateCompany = () => {
             {successMessage}
           </Text>
         )}
-        <Button type="submit" my="4" bg={"green.400"}>
+        <Button type="submit" my="4" colorScheme="green" size="sm">
           Salvar
         </Button>
       </form>

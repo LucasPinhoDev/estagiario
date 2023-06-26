@@ -28,17 +28,31 @@ import { useEffect, useState } from "react";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const router = useRouter();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isCompany, setIsCompany] = useState(false);
+
+  const linkColor = useColorModeValue("gray.600", "gray.200");
+  const linkHoverColor = useColorModeValue("gray.800", "white");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    const userType = localStorage.getItem("userType");
+
     const isValidToken = !!token;
+
+    if (userType == "company") {
+      setIsCompany(true);
+    } else {
+      setIsCompany(false);
+    }
+
     setIsAuthenticated(isValidToken);
   }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userType");
     router.push("/login");
   };
 
@@ -97,11 +111,48 @@ export default function WithSubnavigation() {
             direction={"row"}
             spacing={6}
           >
+            {isCompany ? (
+              <>
+                <Link
+                  p={1}
+                  href={"/companyBoard"}
+                  fontSize={"md"}
+                  fontWeight={500}
+                  ml="30px"
+                  mt={1}
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: "none",
+                    color: linkHoverColor,
+                  }}
+                >
+                  DashBoard
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link
+                  p={1}
+                  href={"#"}
+                  fontSize={"md"}
+                  fontWeight={500}
+                  ml="30px"
+                  mt={1}
+                  hidden
+                  color={linkColor}
+                  _hover={{
+                    textDecoration: "none",
+                    color: linkHoverColor,
+                  }}
+                >
+                  Dashboard
+                </Link>
+              </>
+            )}
             {isAuthenticated ? (
               <>
                 <Button
                   as={"a"}
-                  display={{ base: "none", md: "inline-flex" }}
                   fontSize={"sm"}
                   fontWeight={600}
                   color={"white"}

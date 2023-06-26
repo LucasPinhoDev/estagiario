@@ -15,6 +15,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import axios from "axios";
+import * as jwt from "jsonwebtoken";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -40,14 +41,12 @@ export default function SimpleCard() {
 
   const isAuthenticated = () => {
     const token = localStorage.getItem("token");
+
     const isValidToken = !!token;
     return isValidToken;
   };
 
   const handleLogin = async () => {
-    const apiUrl = process.env.FETCH_URL;
-    console.log(apiUrl);
-
     try {
       const response = await axios.post(`${process.env.FETCH_URL}/auth/login`, {
         email,
@@ -56,7 +55,21 @@ export default function SimpleCard() {
 
       if (response.status === 201) {
         localStorage.setItem("token", response.data.token);
-        router.push("/companyBoard");
+
+        const secretKey = "minhaChavePrivadaSuperSecreta";
+        const decodedToken = jwt.verify(response.data.token, secretKey) as {
+          userId: string;
+          userType: string;
+        };
+
+        localStorage.setItem("userType", decodedToken.userType);
+
+        if (decodedToken.userType == "company") {
+          router.push("/companyBoard");
+          return;
+        }
+
+        router.push("/vagas");
       } else {
         setErrorMessage("Erro ao fazer login. Tente novamente mais tarde.");
       }
