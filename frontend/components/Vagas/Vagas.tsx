@@ -62,7 +62,7 @@ export default function SearchPage() {
     const fetchJobs = async () => {
       try {
         const response = await axios.get(
-          `${process.env.BASE_URL_FRONT}/job/findAll`,
+          `${process.env.FETCH_URL}/job/findAll`,
           {
             params: { params: searchValue }, // Enviar o parâmetro como 'params'
           }
