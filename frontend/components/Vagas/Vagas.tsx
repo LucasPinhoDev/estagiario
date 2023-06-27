@@ -13,7 +13,6 @@ import axios from "axios";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
 
-const API_BASE_URL = "http://localhost:3100";
 const ITEMS_PER_PAGE = 5; // Defina o número de itens por página
 
 interface Job {
@@ -62,9 +61,12 @@ export default function SearchPage() {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/job/findAll`, {
-          params: { params: searchValue }, // Enviar o parâmetro como 'params'
-        });
+        const response = await axios.get(
+          `${process.env.BASE_URL_FRONT}/job/findAll`,
+          {
+            params: { params: searchValue }, // Enviar o parâmetro como 'params'
+          }
+        );
         setJobs(response.data);
       } catch (error) {
         console.error("Erro ao buscar as vagas", error);
