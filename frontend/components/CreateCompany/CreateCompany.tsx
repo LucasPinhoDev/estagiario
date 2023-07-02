@@ -75,12 +75,13 @@ const CreateCompany = () => {
 
   return (
     <Box bg="white" p={4}>
-      <h1>Editar Empresa</h1>
+      <h1>Cadastro de Empresas</h1>
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Nome:</FormLabel>
           <Input
             type="text"
+            placeholder="Digite o nome da empresa"
             name="name"
             value={formData.name}
             onChange={handleChange}
@@ -91,6 +92,7 @@ const CreateCompany = () => {
           <FormLabel>Website:</FormLabel>
           <Input
             type="text"
+            placeholder="https://site-da-empresa.com"
             name="website"
             value={formData.website}
             onChange={handleChange}
@@ -101,6 +103,7 @@ const CreateCompany = () => {
           <FormLabel>Logo:</FormLabel>
           <Input
             type="text"
+            placeholder="Link da logo"
             name="logo"
             value={formData.logo}
             onChange={handleChange}
@@ -111,6 +114,7 @@ const CreateCompany = () => {
           <FormLabel>Localização:</FormLabel>
           <Input
             type="text"
+            placeholder="Joinville - SC / Brasil"
             name="location"
             value={formData.location}
             onChange={handleChange}
@@ -121,6 +125,7 @@ const CreateCompany = () => {
           <FormLabel>Instagram:</FormLabel>
           <Input
             type="text"
+            placeholder="https://www.instagram.com/seu-instagram/"
             name="instagram"
             value={formData.instagram}
             onChange={handleChange}
@@ -130,6 +135,7 @@ const CreateCompany = () => {
         <FormControl>
           <FormLabel>Descrição Curta:</FormLabel>
           <Textarea
+            placeholder="Descrição curta sobre a empresa"
             name="desc"
             value={formData.desc}
             onChange={handleChange}
@@ -140,6 +146,7 @@ const CreateCompany = () => {
           <FormLabel>LinkedIn:</FormLabel>
           <Input
             type="text"
+            placeholder="https://www.linkedin.com/in/linkedin-da-empresa"
             name="linkedin"
             value={formData.linkedin}
             onChange={handleChange}
@@ -149,6 +156,7 @@ const CreateCompany = () => {
         <FormControl isRequired>
           <FormLabel>Descrição:</FormLabel>
           <Textarea
+            placeholder="Descrição completa da empresa"
             name="description"
             value={formData.description}
             onChange={handleChange}

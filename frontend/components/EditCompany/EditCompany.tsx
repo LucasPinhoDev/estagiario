@@ -22,6 +22,7 @@ interface Company {
   instagram: string;
   linkedin: string;
   description: string;
+  desc: string; // Adicione essa propriedade
   isOpen: boolean;
   isEditing: boolean;
   editFormData: {
@@ -31,6 +32,7 @@ interface Company {
     instagram: string;
     linkedin: string;
     description: string;
+    desc: string; // Adicione essa propriedade
   };
 }
 
@@ -51,9 +53,7 @@ const EditCompany = () => {
         }
       );
       const companiesData = response.data;
-      console.log(companiesData);
 
-      // Atualize os dados das empresas com as novas informações
       const updatedCompanies = companiesData.map((company: Company) => ({
         ...company,
         isOpen: false,
@@ -65,6 +65,7 @@ const EditCompany = () => {
           instagram: company.instagram,
           linkedin: company.linkedin,
           description: company.description,
+          desc: company.desc,
         },
       }));
 
@@ -158,6 +159,7 @@ const EditCompany = () => {
             location: company.editFormData.location || company.location,
             description:
               company.editFormData.description || company.description,
+            desc: company.editFormData.desc || company.desc,
           };
         }
         return company;
@@ -219,6 +221,15 @@ const EditCompany = () => {
                     }
                     mb="2"
                   />
+                  <FormLabel>Descrição Curta:</FormLabel>
+                  <Textarea
+                    name="desc"
+                    value={company.editFormData.desc || company.desc}
+                    onChange={(e) =>
+                      handleCompanyEditFieldChange(company.id, e)
+                    }
+                    mb="2"
+                  />
                   <FormLabel>Descrição:</FormLabel>
                   <Textarea
                     name="description"
@@ -275,6 +286,9 @@ const EditCompany = () => {
                     <strong>Localização:</strong> {company.location}
                   </Text>
                   <Text>
+                    <strong>Descrição Curta:</strong> {company.desc}
+                  </Text>
+                  <Text>
                     <strong>Descrição:</strong> {company.description}
                   </Text>
                   <Text>
@@ -288,9 +302,6 @@ const EditCompany = () => {
                   </Text>
                   <Text>
                     <strong>LinkedIn:</strong> {company.linkedin}
-                  </Text>
-                  <Text>
-                    <strong>Descrição:</strong> {company.description}
                   </Text>
                   <Button
                     mt="2"

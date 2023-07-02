@@ -169,13 +169,12 @@ export class JobService {
               name: true,
               website: true,
               logo: true,
+              desc: true,
               description: true,
             },
           },
         },
       });
-
-      console.log(job);
 
       return job;
     } catch (error) {
@@ -185,8 +184,6 @@ export class JobService {
 
   async updateJob(data: { jobData: any }): Promise<Job> {
     const { jobData } = data;
-
-    console.log(jobData); // Verifique se o objeto jobData está sendo recebido corretamente
 
     const job = await this.prisma.job.findFirst({
       where: {
@@ -215,7 +212,6 @@ export class JobService {
 
   async deleteJob(data: { jobId: any }): Promise<void> {
     const { jobId } = data;
-    console.log(jobId);
 
     const job = await this.prisma.job.findFirst({
       where: {

@@ -41,7 +41,6 @@ const LinkItems: Array<LinkItemProps> = [
   { name: "Home", icon: FiHome },
   { name: "Nova Vagas", icon: FiTrendingUp },
   { name: "Editar Vagas", icon: FiTrendingUp },
-  { name: "Candidatos", icon: FiCompass },
 ];
 
 export default function Sidebar({ children }: { children: ReactNode }) {
@@ -207,7 +206,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">{localStorage.getItem("name")}</Text>
                   <Text fontSize="xs" color="gray.600">
                     Admin
                   </Text>

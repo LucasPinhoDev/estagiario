@@ -25,7 +25,11 @@ export class AuthService {
     }
 
     const secretKey = 'minhaChavePrivadaSuperSecreta'; // Defina sua chave privada aqui
-    const tokenPayload = { userId: user.id, userType: user.type };
+    const tokenPayload = {
+      userId: user.id,
+      userType: user.type,
+      name: user.fullName,
+    };
     const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1d' });
 
     return token;
@@ -58,7 +62,12 @@ export class AuthService {
       });
 
       const secretKey = 'minhaChavePrivadaSuperSecreta'; // Defina sua chave privada aqui
-      const tokenPayload = { userId: newUser.id, userType: newUser.type };
+      const tokenPayload = {
+        userId: newUser.id,
+        userType: newUser.type,
+        name: newUser.fullName,
+      };
+
       const token = jwt.sign(tokenPayload, secretKey, { expiresIn: '1d' });
 
       return token;

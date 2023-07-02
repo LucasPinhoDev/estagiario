@@ -90,7 +90,6 @@ export class CompanyService {
         });
 
         if (companies.length > 0) {
-          console.log(companies);
           return companies;
         } else {
           throw new NotFoundException('Empresas não encontradas');
@@ -107,7 +106,6 @@ export class CompanyService {
         });
 
         if (companies.length > 0) {
-          //console.log(companies);
           return companies;
         } else {
           throw new NotFoundException('Empresas não encontradas');
@@ -120,8 +118,6 @@ export class CompanyService {
 
   async updateCompany(data: { companyData: any }): Promise<Company> {
     const { companyData } = data;
-
-    console.log(companyData + ' Update company ');
 
     const company = await this.prisma.company.findFirst({
       where: {

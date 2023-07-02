@@ -98,7 +98,6 @@ const CreateJob = () => {
           `${process.env.FETCH_URL}/company/find`,
           { token: localStorage.getItem("token"), find: "byId" }
         );
-        console.log(response.data);
 
         setUserCompanies(response.data);
       } catch (error) {
@@ -133,6 +132,7 @@ const CreateJob = () => {
         <FormControl isRequired>
           <FormLabel>Título:</FormLabel>
           <Input
+            placeholder="Digite o título da vaga"
             type="text"
             name="title"
             value={formData.title}
@@ -141,8 +141,9 @@ const CreateJob = () => {
         </FormControl>
 
         <FormControl isRequired>
-          <FormLabel>Tipo de Localização:</FormLabel>
+          <FormLabel>Formato do trabalho</FormLabel>
           <Input
+            placeholder="Remoto/Presencial/Híbrido"
             type="text"
             name="jobLocationType"
             value={formData.jobLocationType}
@@ -153,6 +154,7 @@ const CreateJob = () => {
         <FormControl isRequired>
           <FormLabel>Descrição:</FormLabel>
           <Textarea
+            placeholder="Digite uma descrição sobre a vaga"
             name="desc"
             value={formData.desc}
             onChange={handleChange}
@@ -162,6 +164,7 @@ const CreateJob = () => {
         <FormControl isRequired>
           <FormLabel>Responsabilidades Desejadas:</FormLabel>
           <Textarea
+            placeholder="Digite as responsabilidades desejadas"
             name="desiredResponsibility"
             value={formData.desiredResponsibility}
             onChange={handleChange}
@@ -171,6 +174,7 @@ const CreateJob = () => {
         <FormControl isRequired>
           <FormLabel>Conhecimentos Necessários:</FormLabel>
           <Textarea
+            placeholder="Digite os conhecimentos desejados"
             name="necessaryKnowledge"
             value={formData.necessaryKnowledge}
             onChange={handleChange}
@@ -180,6 +184,7 @@ const CreateJob = () => {
         <FormControl isRequired>
           <FormLabel>Benefícios:</FormLabel>
           <Textarea
+            placeholder="Digite os benefícios da vaga"
             name="benefits"
             value={formData.benefits}
             onChange={handleChange}
@@ -187,8 +192,9 @@ const CreateJob = () => {
         </FormControl>
 
         <FormControl isRequired>
-          <FormLabel>Link para aplicar:</FormLabel>
+          <FormLabel>WhatsApp receber aplicantes:</FormLabel>
           <Input
+            placeholder="47930003000"
             type="text"
             name="applyLink"
             value={formData.applyLink}
@@ -199,6 +205,7 @@ const CreateJob = () => {
         <FormControl>
           <FormLabel>Valor:</FormLabel>
           <Input
+            placeholder="1500"
             type="number"
             name="value"
             value={formData.value}

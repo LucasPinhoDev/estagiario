@@ -36,11 +36,10 @@ interface LinkItemProps {
 }
 
 const LinkItems: Array<LinkItemProps> = [
-  { name: "Criar mpresa", icon: FiHome },
-  { name: "Empresas", icon: FiHome },
-  { name: "Criar Vagas", icon: FiTrendingUp },
-  { name: "Editar Vagas", icon: FiTrendingUp },
-  { name: "Candidatos", icon: FiCompass },
+  { name: "Cadastrar Empresa", icon: FiHome },
+  { name: "Listar Empresas", icon: FiHome },
+  { name: "Cadastrar Vagas", icon: FiTrendingUp },
+  { name: "Listar Vagas", icon: FiTrendingUp },
 ];
 
 export default function Sidebar({}: { children: ReactNode }) {
@@ -107,13 +106,10 @@ export default function Sidebar({}: { children: ReactNode }) {
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {/* Renderizar o conteúdo com base no item ativo */}
-        {activeItem === "Criar mpresa" && <CreateCompany />}
-        {activeItem === "Empresas" && <EditCompany />}
-        {activeItem === "Criar Vagas" && <CreateJob />}
-        {activeItem === "Editar Vagas" && <EditJob />}
-        {activeItem === "Candidatos" && (
-          <div>Conteúdo da página Candidatos</div>
-        )}
+        {activeItem === "Cadastrar Empresa" && <CreateCompany />}
+        {activeItem === "Listar Empresas" && <EditCompany />}
+        {activeItem === "Cadastrar Vagas" && <CreateJob />}
+        {activeItem === "Listar Vagas" && <EditJob />}
       </Box>
     </Box>
   );
@@ -277,7 +273,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                 <Avatar
                   size={"sm"}
                   src={
-                    "https://images.unsplash.com/photo-1619946794135-5bc917a27793?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                    "https://dewey.tailorbrands.com/production/brand_version_mockup_image/545/8005182545_01d7c8f6-695a-442b-89d9-5cd1f63f57f9.png?cb=1671608255"
                   }
                 />
                 <VStack
@@ -286,7 +282,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   spacing="1px"
                   ml="2"
                 >
-                  <Text fontSize="sm">Justina Clark</Text>
+                  <Text fontSize="sm">{localStorage.getItem("name")}</Text>
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>
                   <FiChevronDown />

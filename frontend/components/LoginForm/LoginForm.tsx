@@ -60,9 +60,11 @@ export default function SimpleCard() {
         const decodedToken = jwt.verify(response.data.token, secretKey) as {
           userId: string;
           userType: string;
+          name: string;
         };
 
         localStorage.setItem("userType", decodedToken.userType);
+        localStorage.setItem("name", decodedToken.name);
 
         if (decodedToken.userType == "company") {
           router.push("/companyBoard");

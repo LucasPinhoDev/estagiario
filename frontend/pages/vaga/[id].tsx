@@ -11,7 +11,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import axios from "axios";
-import NextLink from "next/link";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -30,6 +30,7 @@ interface Vaga {
     name: string;
     website: string;
     logo: string;
+    desc: string;
     description: string;
   };
 }
@@ -114,7 +115,7 @@ function Job() {
             mt={{ lg: "5px", sm: "-50px" }}
             mb="10px"
           >
-            <Center pt={300}>
+            <Center pt={100}>
               <Box
                 maxW={"320px"}
                 w={"full"}
@@ -134,15 +135,24 @@ function Job() {
                   {vaga.company.name}
                 </Heading>
                 <Text fontWeight={600} color={"gray.500"} mb={4}>
-                  {vaga.company.website}
+                  <a
+                    href={vaga.company.website}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push(vaga.company.website);
+                    }}
+                  >
+                    Site da empresa
+                  </a>
                 </Text>
+
                 <Text
                   textAlign={"center"}
                   color={useColorModeValue("gray.700", "gray.400")}
                   px={3}
                   fontSize="sm"
                 >
-                  {vaga.company.description}
+                  {vaga.company.desc}
                 </Text>
 
                 <Stack
@@ -160,7 +170,7 @@ function Job() {
                     {`#${vaga.jobLocationType}`}
                   </Badge>
                 </Stack>
-                <NextLink href={vaga.company?.website ?? ""} passHref>
+                <Link href={vaga.company?.website} passHref>
                   <Stack mt={8} direction={"row"} spacing={4}>
                     <Button
                       flex={1}
@@ -181,7 +191,7 @@ function Job() {
                       Aplicar na vaga
                     </Button>
                   </Stack>
-                </NextLink>
+                </Link>
               </Box>
             </Center>
           </Flex>

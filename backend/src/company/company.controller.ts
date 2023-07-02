@@ -20,8 +20,6 @@ export class CompanyController {
       token: string;
     },
   ) {
-    console.log(companyData);
-
     const createdJob = await this.companyService.createCompany(companyData);
 
     return createdJob;
@@ -40,8 +38,6 @@ export class CompanyController {
 
   @Post('update')
   async updateCompany(@Body() data: { companyData: Company }) {
-    console.log(data.companyData);
-
     return await this.companyService.updateCompany(data);
   }
 

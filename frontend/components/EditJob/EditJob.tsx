@@ -48,7 +48,6 @@ const EditJob = () => {
         find: "many",
       });
       const jobsData = response.data;
-      console.log(jobsData);
 
       setJobs(jobsData);
     } catch (error) {
