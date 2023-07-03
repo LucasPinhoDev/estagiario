@@ -27,6 +27,7 @@ jobs:
 
       - name: Build
         run: yarn build
+        working-directory: backend
 
       - name: Run tests
-        run: yarn test --cwd backend/src
+        run: yarn test
