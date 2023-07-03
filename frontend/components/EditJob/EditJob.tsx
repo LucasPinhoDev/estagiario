@@ -22,6 +22,7 @@ interface Job {
   necessaryKnowledge: string;
   benefits: string;
   value: string;
+  applyLink: string;
   isOpen: boolean;
   isEditing: boolean;
   editFormData: {
@@ -32,6 +33,7 @@ interface Job {
     necessaryKnowledge: string;
     benefits: string;
     value: string;
+    applyLink: string;
   };
 }
 
@@ -141,6 +143,7 @@ const EditJob = () => {
               job.editFormData.necessaryKnowledge || job.necessaryKnowledge,
             benefits: job.editFormData.benefits || job.benefits,
             value: job.editFormData.value || job.value,
+            applyLink: job.editFormData.applyLink || job.applyLink,
           };
         }
         return job;
@@ -232,6 +235,13 @@ const EditJob = () => {
                     onChange={(e) => handleEditJobFieldChange(job.id, e)}
                     mb="2"
                   />
+                  <Input
+                    type="text"
+                    name="applyLink"
+                    value={job.editFormData.applyLink || job.applyLink}
+                    onChange={(e) => handleEditJobFieldChange(job.id, e)}
+                    mb="2"
+                  />
                   <Button
                     mt="2"
                     colorScheme="blue"
@@ -265,6 +275,10 @@ const EditJob = () => {
                   <Text>
                     <strong>Valor da vaga: </strong>
                     {job.value}
+                  </Text>
+                  <Text>
+                    <strong>Link de candidatura: </strong>
+                    {job.applyLink}
                   </Text>
                   <Button
                     mt="2"

@@ -20,6 +20,7 @@ export class JobService {
     necessaryKnowledge: string;
     benefits: string;
     value: number;
+    applyLink: string;
     companyId: string;
     token: string;
   }): Promise<Job> {
@@ -31,6 +32,7 @@ export class JobService {
       necessaryKnowledge,
       benefits,
       value,
+      applyLink,
       companyId,
       token,
     } = jobData;
@@ -52,6 +54,7 @@ export class JobService {
           necessaryKnowledge,
           benefits,
           value,
+          applyLink,
           companyId,
           userId: decodedToken.userId,
         },
@@ -163,6 +166,7 @@ export class JobService {
           desiredResponsibility: true,
           necessaryKnowledge: true,
           benefits: true,
+          applyLink: true,
           value: true,
           company: {
             select: {

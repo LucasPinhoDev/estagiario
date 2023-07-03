@@ -224,6 +224,8 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userType");
+    localStorage.removeItem("userName");
     router.push("/login");
   };
 
