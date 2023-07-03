@@ -198,10 +198,17 @@ export class JobService {
 
     if (job) {
       try {
-        const updatedData = {
-          ...jobData.editFormData,
-          value: parseInt(jobData.editFormData.value),
-        };
+        const { value, ...restFormData } = jobData.editFormData;
+
+        let updatedData = { ...restFormData };
+
+        if (!isNaN(value)) {
+          updatedData = {
+            ...updatedData,
+            value: parseInt(value),
+          };
+        }
+
         return await this.prisma.job.update({
           where: { id: jobData.id },
           data: updatedData,
