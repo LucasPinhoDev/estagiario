@@ -24,8 +24,17 @@ jobs:
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 14
         cache: 'yarn'
-    - run: yarn ci
-    - run: yarn run build --if-present
-    - run: yarn test
+    
+    - name: Install dependencies
+      working-directory: backend
+      run: yarn ci
+     
+    - name: Build project
+      working-directory: backend
+      run: yarn run build --if-present
+    
+    - name: Run tests
+      working-directory: backend
+      run: yarn test
