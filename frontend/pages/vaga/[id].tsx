@@ -33,6 +33,7 @@ interface Vaga {
     desc: string;
     description: string;
   };
+  applyLink: string;
 }
 
 function Job() {
@@ -170,7 +171,17 @@ function Job() {
                     {`#${vaga.jobLocationType}`}
                   </Badge>
                 </Stack>
-                <Link href={vaga.company?.website} passHref>
+                <Link
+                  href={
+                    "https://wa.me/55" +
+                    vaga.applyLink +
+                    "?text=Olá,%20tenho%20interesse%20nessa%20vaga%20de%20estágio. " +
+                    vaga.title +
+                    " - Identificador da Vaga : " +
+                    vaga.id
+                  }
+                  passHref
+                >
                   <Stack mt={8} direction={"row"} spacing={4}>
                     <Button
                       flex={1}

@@ -16,6 +16,7 @@ export class JobController {
       necessaryKnowledge: string;
       benefits: string;
       value: number;
+      applyLink: string;
       companyId: string;
       token: string;
     },
