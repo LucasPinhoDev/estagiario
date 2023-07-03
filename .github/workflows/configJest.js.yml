@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-	working-directory: backend
+        working-directory: backend
 	
       - name: Build
         run: yarn build
