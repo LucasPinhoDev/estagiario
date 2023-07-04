@@ -17,7 +17,7 @@ Defesa do tema: [Acesse](https://catolicasc-my.sharepoint.com/:p:/g/personal/luc
 
 Trello do Estagiar.io:
 
-https://trello.com/b/7CV2IA7D/estagiar-io
+[Acesse](https://trello.com/b/7CV2IA7D/estagiar-io)
 
 ## Funcionalidades
 
