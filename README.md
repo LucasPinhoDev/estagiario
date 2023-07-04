@@ -8,10 +8,10 @@
 
 Este é um projeto de um buscador de vagas de estágio, criado para ajudar estudantes a encontrar oportunidades de estágio em diversas áreas.
 
-Criado como projeto de conclusão de curso da Engenharia de Software do Centro Universitário Católica de Santa Catarina, em Joinville, nosso objetivo é ajudar empresas a divulgar suas vagas e estudantes a encontrarem oportunidades de estágio. Acesse agora e comece sua busca por um estágio ou publique uma vaga para atrair talentos. Junte-se a nós para impulsionar sua carreira profissional! Acesse já!! [https://estagiar.io](estagiar.io)
+Criado como projeto de conclusão de curso da Engenharia de Software do Centro Universitário Católica de Santa Catarina, em Joinville, nosso objetivo é ajudar empresas a divulgar suas vagas e estudantes a encontrarem oportunidades de estágio. Acesse agora e comece sua busca por um estágio ou publique uma vaga para atrair talentos. Junte-se a nós para impulsionar sua carreira profissional! Acesse já!! [https://estagiar.io](https://estagiar.io)
 
 
-Defesa do tema: [https://catolicasc-my.sharepoint.com/:p:/g/personal/lucas_pinho_catolicasc_edu_br/EXEdUWLQlVJNlW7oBUSO8WwBEfee20zsmokLNU_rQWB96Q?e=bUuZOD](Acesse)
+Defesa do tema: [Acesse](https://catolicasc-my.sharepoint.com/:p:/g/personal/lucas_pinho_catolicasc_edu_br/EXEdUWLQlVJNlW7oBUSO8WwBEfee20zsmokLNU_rQWB96Q?e=bUuZOD)
 
 #### Board de atividades em pacotes:
 
