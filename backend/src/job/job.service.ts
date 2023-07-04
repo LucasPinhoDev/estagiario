@@ -6,7 +6,7 @@ import {
 import { PrismaService } from '../prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
 
-import { Job, Prisma } from '@prisma/client';
+import { Job } from '@prisma/client';
 
 @Injectable()
 export class JobService {
@@ -37,9 +37,7 @@ export class JobService {
       token,
     } = jobData;
 
-    const secretKey = 'minhaChavePrivadaSuperSecreta';
-
-    const decodedToken = jwt.verify(token, secretKey) as {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as {
       userId: string;
       userType: string;
     };
@@ -67,9 +65,7 @@ export class JobService {
   async findJob(jobData: { token: string; find: string }): Promise<Job[]> {
     const { token, find } = jobData;
 
-    const secretKey = 'minhaChavePrivadaSuperSecreta';
-
-    const decodedToken = jwt.verify(token, secretKey) as {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as {
       userId: string;
       userType: string;
     };
@@ -141,6 +137,11 @@ export class JobService {
             id: true,
             title: true,
             desc: true,
+            company: {
+              select: {
+                logo: true,
+              },
+            },
           },
         });
 

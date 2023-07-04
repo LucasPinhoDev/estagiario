@@ -37,11 +37,12 @@ interface Vaga {
 }
 
 function Job() {
-  const router = useRouter();
-  const { id } = router.query;
-
   const [vaga, setVaga] = useState<Vaga | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(() => {
     async function fetchVagaDetalhes() {
@@ -59,6 +60,8 @@ function Job() {
         setLoading(false);
       }
     }
+
+    setIsUserLoggedIn(localStorage.getItem("token") !== null);
 
     fetchVagaDetalhes();
   }, [id]);
@@ -87,10 +90,11 @@ function Job() {
               </Text>
               <Text fontSize="sm">Tipo de estágio: {vaga.jobLocationType}</Text>
             </Stack>
-            <Stack spacing={3} pb="60px">
+            <Stack pb="60px">
+              <strong>Descrição da vaga</strong>
               <Text fontSize="sm">{vaga.desc}</Text>
             </Stack>
-            <Stack spacing={3}>
+            <Stack>
               <Text fontSize="md" mb="30px">
                 <strong>Responsabilidade desejada</strong>
                 <br></br>
@@ -102,10 +106,16 @@ function Job() {
                 {vaga.necessaryKnowledge}
               </Text>
               <Text fontSize="md" mb="30px">
+                <br></br>
                 <strong>Benefícios</strong>
                 <br></br>
                 {vaga.benefits}
               </Text>
+              <Stack spacing={3} pb="60px">
+                <br></br>
+                <strong>Sobre a empresa da empresa</strong>
+                <Text fontSize="md">{vaga.company.description}</Text>
+              </Stack>
             </Stack>
           </Flex>
           <Flex
@@ -173,34 +183,59 @@ function Job() {
                 </Stack>
                 <Link
                   href={
-                    "https://wa.me/55" +
-                    vaga.applyLink +
-                    "?text=Olá,%20tenho%20interesse%20nessa%20vaga%20de%20estágio. " +
-                    vaga.title +
-                    " - Identificador da Vaga : " +
-                    vaga.id
+                    isUserLoggedIn
+                      ? "https://wa.me/55" +
+                        vaga.applyLink +
+                        "?text=Olá,%20tenho%20interesse%20nessa%20vaga%20de%20estágio. " +
+                        vaga.title +
+                        " - Identificador da Vaga : " +
+                        vaga.id
+                      : "/login" // Redirecionar para a página de login se o usuário não estiver logado
                   }
                   passHref
                 >
                   <Stack mt={8} direction={"row"} spacing={4}>
-                    <Button
-                      flex={1}
-                      fontSize={"sm"}
-                      rounded={"full"}
-                      bg={"blue.400"}
-                      color={"white"}
-                      boxShadow={
-                        "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
-                      }
-                      _hover={{
-                        bg: "blue.500",
-                      }}
-                      _focus={{
-                        bg: "blue.500",
-                      }}
-                    >
-                      Aplicar na vaga
-                    </Button>
+                    {isUserLoggedIn ? (
+                      <Button
+                        flex={1}
+                        fontSize={"sm"}
+                        rounded={"full"}
+                        bg={"blue.400"}
+                        color={"white"}
+                        boxShadow={
+                          "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                        }
+                        _hover={{
+                          bg: "blue.500",
+                        }}
+                        _focus={{
+                          bg: "blue.500",
+                        }}
+                      >
+                        Aplicar na vaga
+                      </Button>
+                    ) : (
+                      <Button
+                        flex={1}
+                        fontSize={"sm"}
+                        rounded={"full"}
+                        bg={"blue.400"}
+                        color={"white"}
+                        boxShadow={
+                          "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
+                        }
+                        _hover={{
+                          bg: "blue.500",
+                        }}
+                        _focus={{
+                          bg: "blue.500",
+                        }}
+                      >
+                        <Link href="/login" passHref>
+                          Entrar para aplicar
+                        </Link>
+                      </Button>
+                    )}
                   </Stack>
                 </Link>
               </Box>

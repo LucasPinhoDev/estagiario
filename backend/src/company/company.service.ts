@@ -37,9 +37,7 @@ export class CompanyService {
       token,
     } = companyData;
 
-    const secretKey = 'minhaChavePrivadaSuperSecreta';
-
-    const decodedToken = jwt.verify(token, secretKey) as {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as {
       userId: string;
       userType: string;
     };
@@ -70,9 +68,7 @@ export class CompanyService {
   }): Promise<{ id: string; name: string }[]> {
     const { token, find } = companyData;
 
-    const secretKey = 'minhaChavePrivadaSuperSecreta';
-
-    const decodedToken = jwt.verify(token, secretKey) as {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as {
       userId: string;
       userType: string;
     };

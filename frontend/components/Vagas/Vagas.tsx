@@ -1,3 +1,4 @@
+import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
   Card,
@@ -5,7 +6,9 @@ import {
   Center,
   Flex,
   Heading,
+  IconButton,
   Image,
+  Input,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -19,7 +22,7 @@ interface Job {
   id: string;
   title: string;
   desc: string;
-  hiringOrganization: {
+  company: {
     logo: string;
   };
 }
@@ -32,15 +35,20 @@ function HitCard({ job }: { job: Job }) {
         overflow="hidden"
         variant="outline"
       >
-        <Image
-          objectFit="cover"
-          maxW={{ base: "60%", sm: "150px" }}
-          src={
-            job.hiringOrganization?.logo ||
-            "https://dewey.tailorbrands.com/production/brand_version_mockup_image/545/8005182545_01d7c8f6-695a-442b-89d9-5cd1f63f57f9.png?cb=1671608255"
-          }
-          alt={job.title}
-        />
+        {job.company?.logo ? ( // Verificar se job.company.logo existe
+          <Image
+            objectFit="cover"
+            boxSize={{ base: "60%", sm: "150px" }}
+            maxWidth={{ base: "100%", sm: "150px" }}
+            maxHeight={{ base: "150px", sm: "150px" }}
+            src={job.company.logo}
+            alt={job.title}
+            pl="2"
+            margin="auto" // Adiciona essa propriedade para centralizar a imagem
+          />
+        ) : (
+          <Box w={{ base: "60%", sm: "150px" }} />
+        )}
 
         <Stack>
           <CardBody>
@@ -100,12 +108,22 @@ export default function SearchPage() {
     <Center className="center">
       <Flex gap="40px" maxW="1000px" direction={{ base: "column", lg: "row" }}>
         <Box boxShadow="md" p="4" m="30">
-          <input
-            type="text"
-            value={searchValue}
-            onChange={handleSearchChange}
-            placeholder="Digite sua pesquisa"
-          />
+          <Flex justify="flex-end" mb={2}>
+            <Input
+              type="text"
+              value={searchValue}
+              onChange={handleSearchChange}
+              placeholder="Pesquise sua vaga"
+              w="400"
+            />
+            <IconButton
+              ml={1}
+              variant="outline"
+              colorScheme="teal"
+              icon={<SearchIcon />}
+              aria-label="Pesquisar"
+            />
+          </Flex>
           <Stack spacing="4">
             {filteredJobs.map((job) => (
               <HitCard key={job.id} job={job} />
