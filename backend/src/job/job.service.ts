@@ -37,9 +37,7 @@ export class JobService {
       token,
     } = jobData;
 
-    const secretKey = 'minhaChavePrivadaSuperSecreta';
-
-    const decodedToken = jwt.verify(token, secretKey) as {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as {
       userId: string;
       userType: string;
     };
@@ -67,9 +65,7 @@ export class JobService {
   async findJob(jobData: { token: string; find: string }): Promise<Job[]> {
     const { token, find } = jobData;
 
-    const secretKey = 'minhaChavePrivadaSuperSecreta';
-
-    const decodedToken = jwt.verify(token, secretKey) as {
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET) as {
       userId: string;
       userType: string;
     };
