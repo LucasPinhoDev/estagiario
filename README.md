@@ -1,6 +1,23 @@
+# Estagiar.io
+
+## Plataforma - Busca de estágios				v.1.0
+
+![](https://camo.githubusercontent.com/96ebfe138ae4b132bba73d52096e1049a9c4619541ed83356de28531aba45a68/68747470733a2f2f66696c65732e656e67616765642e636f6d2e62722f3564623036383736643139363562303030373434303263322f6163636f756e742f3564623036383736643139363562303030373434303263322f514a31706a6d4b55514a47515a524f38554f50565f6c6f676f732d66696e616c2d31342e706e67)
+
 # Buscador de Vagas para Estagiar.io
 
 Este é um projeto de um buscador de vagas de estágio, criado para ajudar estudantes a encontrar oportunidades de estágio em diversas áreas.
+
+Criado como projeto de conclusão de curso da Engenharia de Software do Centro Universitário Católica de Santa Catarina, em Joinville, nosso objetivo é ajudar empresas a divulgar suas vagas e estudantes a encontrarem oportunidades de estágio. Acesse agora e comece sua busca por um estágio ou publique uma vaga para atrair talentos. Junte-se a nós para impulsionar sua carreira profissional! Acesse já!! [https://estagiar.io](estagiar.io)
+
+
+Defesa do tema: [https://catolicasc-my.sharepoint.com/:p:/g/personal/lucas_pinho_catolicasc_edu_br/EXEdUWLQlVJNlW7oBUSO8WwBEfee20zsmokLNU_rQWB96Q?e=bUuZOD](Acesse)
+
+#### Board de atividades em pacotes:
+
+Trello do Estagiar.io:
+
+https://trello.com/b/7CV2IA7D/estagiar-io
 
 ## Funcionalidades
 
@@ -22,12 +39,10 @@ Este é um projeto de um buscador de vagas de estágio, criado para ajudar estud
 
 ## Como Rodar o Projeto
 
-1. Clone este repositório em sua máquina local usando o comando `git clone https://github.com/PinhoBC/estagiar-io.git`
-2. Instale as dependências do projeto utilizando o comando `npm install | yarn install` na pasta raiz do projeto e também na pasta `client`
-3. Inicie o sistema utilizando o comando na pasta raiz do projeto
+1. Clone este repositório em sua máquina local usando o comando `git clone https://github.com/PinhoBC/estagiario.git`
+2. Instale as dependências do projeto utilizando o comando `yarn install` na pasta `frontend` e `backend`
+3. Inicie o sistema utilizando o comando na pasta do projeto, um para o cliente e outro para o serviço.
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
@@ -37,8 +52,15 @@ Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o
 
 1. Faça um fork deste repositório
 2. Crie uma nova branch com sua contribuição usando o comando `git checkout -b minha-branch`
-3. Faça suas alterações e commit utilizando mensagens claras e objetivas
+3. Faça suas alterações e commit
 4. Envie um pull request para a branch `main` deste repositório
+
+##### Diagrama de Caso de Uso:
+
+![]()
+
+##### Diagrama Modelo de Entidade Relacional de Banco de Dados:
+
 
 ## Licença
 
