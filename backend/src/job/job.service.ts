@@ -6,7 +6,7 @@ import {
 import { PrismaService } from '../prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
 
-import { Job, Prisma } from '@prisma/client';
+import { Job } from '@prisma/client';
 
 @Injectable()
 export class JobService {
@@ -141,6 +141,11 @@ export class JobService {
             id: true,
             title: true,
             desc: true,
+            company: {
+              select: {
+                logo: true,
+              },
+            },
           },
         });
 

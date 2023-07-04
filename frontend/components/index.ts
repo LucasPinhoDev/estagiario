@@ -10,6 +10,7 @@ export { default as CreateJob } from "./CreateJob/CreateJob";
 export { default as EditCompany } from "./EditCompany/EditCompany";
 export { default as EditJob } from "./EditJob/EditJob";
 export { default as Features } from "./Features/Features";
+export { default as Grid } from "./Features/Grid";
 export { default as Footer } from "./Footer/Footer";
 export { default as Hero } from "./Hero/Hero";
 export { default as Job } from "./Job/Job";

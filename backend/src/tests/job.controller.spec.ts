@@ -2,6 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { JobService } from '../job/job.service';
 import { PrismaService } from '../prisma/prisma.service';
 import * as jwt from 'jsonwebtoken';
+import { JobController } from 'src/job/job.controller';
 
 describe('JobController', () => {
   let controller: JobController;

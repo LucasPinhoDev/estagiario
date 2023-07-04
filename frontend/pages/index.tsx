@@ -1,4 +1,11 @@
-import { Features, Footer, Hero, NavBar, Testimonials } from "../components";
+import {
+  Features,
+  Footer,
+  Grid,
+  Hero,
+  NavBar,
+  Testimonials,
+} from "../components";
 
 function Index() {
   return (
@@ -6,6 +13,7 @@ function Index() {
       <NavBar />
       <Hero />
       <Testimonials />
+      <Grid />
       <Features />
       <Footer />
     </>

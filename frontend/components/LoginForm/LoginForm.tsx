@@ -28,7 +28,13 @@ export default function SimpleCard() {
 
   useEffect(() => {
     if (isAuthenticated()) {
-      router.push("/vagas");
+      const userType = localStorage.getItem("userType");
+
+      if (userType == "company") {
+        router.push("/companyBoard");
+      } else {
+        router.push("/vagas");
+      }
     }
 
     const urlParams = new URLSearchParams(window.location.search);

@@ -361,20 +361,14 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: "Sobre nós",
-    href: "/#",
+    href: "/#about",
   },
   {
-    label: "Publicar vaga",
-    children: [
-      {
-        label: "Acesse",
-        subLabel: "Publique suas vagas",
-        href: "/#",
-      },
-    ],
+    label: "Pesquisar vaga",
+    href: "/vagas",
   },
   {
     label: "Contato",
-    href: "#",
+    href: "/#about",
   },
 ];

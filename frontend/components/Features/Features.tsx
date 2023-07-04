@@ -43,7 +43,7 @@ const Feature = ({ text, icon, iconBg }: FeatureProps) => {
 
 export default function SplitWithImage() {
   return (
-    <Container maxW={"5xl"} py={12}>
+    <Container maxW={"5xl"} py={12} id="about">
       <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
         <Stack spacing={4}>
           <Text
@@ -56,12 +56,7 @@ export default function SplitWithImage() {
             alignSelf={"flex-start"}
             rounded={"md"}
           >
-            <a
-              target={"_blank"}
-              href="https://api.whatsapp.com/send?phone=5547996624794"
-            >
-              Poste suas vagas
-            </a>
+            <a href="/login">É uma empresa? Poste suas vagas!</a>
           </Text>
 
           <Heading>Entre em contato conosco</Heading>
@@ -88,13 +83,6 @@ export default function SplitWithImage() {
               icon={<Icon as={IoLogoBitcoin} color={"green.500"} w={5} h={5} />}
               iconBg={useColorModeValue("green.100", "green.900")}
               text={"Sem custo"}
-            />
-            <Feature
-              icon={
-                <Icon as={IoSearchSharp} color={"purple.500"} w={5} h={5} />
-              }
-              iconBg={useColorModeValue("purple.100", "purple.900")}
-              text={"Analise os estagiários"}
             />
           </Stack>
         </Stack>
