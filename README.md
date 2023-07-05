@@ -60,7 +60,7 @@ Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o
 ![](https://raw.githubusercontent.com/PinhoBC/estagiario/main/a4340e4f-4425-4891-adaa-780981df5bae.jpg)
 
 ##### Diagrama Modelo de Entidade Relacional de Banco de Dados:
-
+![](https://raw.githubusercontent.com/PinhoBC/estagiario/main/Captura%20de%20tela%202023-07-04%20230511.png)
 
 ## Licença
 
