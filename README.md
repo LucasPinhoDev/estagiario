@@ -57,7 +57,7 @@ Abra [http://localhost:3000](http://localhost:3000) com seu navegador para ver o
 
 ##### Diagrama de Caso de Uso:
 
-![]()
+![](https://raw.githubusercontent.com/PinhoBC/estagiario/main/a4340e4f-4425-4891-adaa-780981df5bae.jpg)
 
 ##### Diagrama Modelo de Entidade Relacional de Banco de Dados:
 
